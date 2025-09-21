@@ -1,107 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="HTML Masters">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <title>Maquetacion con BootStrap</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="HTML Masters">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <title>Maquetación con Bootstrap</title>
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">agoodshop</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Tienda</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Accesorios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Soporte</a>
-        </li>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-secondary" type="submit">Contactar</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<div class="container text-left">
-  <div class="row">
-    <div class="col">
-      <img src="https://imgs.search.brave.com/JyfMNUPrWgPn3zMSnn9sYFkiAJ1XeSrYyqg1Z_1Gl20/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE3YjBpUXlvOUwu/anBn" alt="">
-    </div>
-    <div class="col">
-      <h6 class="text-danger">OFERTA</h6>
-      <h1>Compra un Ifone 17 Pro Max</h1>
-      <p>Ifone 17 Pro Max: Tu nuevo superpoder. Nuestro sistema de cámara dual avanzado. el chip que hace morder 
-        el polvo a la competencia. Un subidón de atonomía que vaya si notarás. Ceramic Shield, mas duro que cualquier vidrio de smartphone
-      </p>
-      <p> </p>
-      <p>Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.</p>
-      <p> </p>
-      <h1>938,99€ <button class="btn btn-primary" type="submit">Comprar</button></h1>
-      <div class="container text-center">
-        <p></p>
-        <div class="row align-items-center">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">   
+    <div class="container-fluid">     
+      <a class="navbar-brand" href="#">agoodshop</a>     
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">       
+        <span class="navbar-toggler-icon"></span>     
+      </button>     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">       
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">         
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Tienda</a></li>         
+          <li class="nav-item"><a class="nav-link active" href="#">Accesorios</a></li>         
+          <li class="nav-item"><a class="nav-link active" href="#">Soporte</a></li>       
+        </ul>       
+        <form class="d-flex" role="search">         
+          <button class="btn btn-outline-secondary" type="submit">Contactar</button>       
+        </form>     
+      </div>   
+    </div> 
+  </nav>
+
+  <!-- Producto principal -->
+  <div class="container my-5">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <img src="https://imgs.search.brave.com/JyfMNUPrWgPn3zMSnn9sYFkiAJ1XeSrYyqg1Z_1Gl20/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE3YjBpUXlvOUwu/anBn" alt="Ifone 17 Pro Max" class="img-fluid mx-auto d-block">
+      </div>
+      <div class="col-md-6 text-start">
+        <h6 class="text-danger">OFERTA</h6>
+        <h1>Compra un Ifone 17 Pro Max</h1>
+        <p>
+          Ifone 17 Pro Max: Tu nuevo superpoder. Nuestro sistema de cámara dual avanzado.  
+          El chip que hace morder el polvo a la competencia. Un subidón de autonomía que vaya si notarás.  
+          Ceramic Shield, más duro que cualquier vidrio de smartphone.
+        </p>
+        <p>
+          Pantalla Super Retina XDR de 6,1 pulgadas. Diseño robusto con bordes planos y resistente al agua.
+        </p>
+        <h1>938,99€ <button class="btn btn-primary" type="button">Comprar</button></h1>
+
+        <div class="container text-center mt-4">
+          <div class="row align-items-center">
             <div class="col">
-                <div> <img src="img/market.png" alt=""></div>
-            Envio rapido, gratuito y sin contacto
+              <img src="img/market.png" alt="Envío" class="mb-2">
+              <div>Envío rápido, gratuito y sin contacto</div>
             </div>
             <div class="col">
-                <div> <img src="img/flecha.png" alt=""></div>
-            Devoluciones fáciles y gratuitas
+              <img src="img/flecha.png" alt="Devoluciones" class="mb-2">
+              <div>Devoluciones fáciles y gratuitas</div>
             </div>
             <div class="col">
-                <div> <img src="img/pago.png" alt=""></div>
-            Posibilidad de pago a plazos
+              <img src="img/pago.png" alt="Pago a plazos" class="mb-2">
+              <div>Posibilidad de pago a plazos</div>
             </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    <h1>Accesorios recomendados</h1>
-    
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+  <!-- Accesorios -->
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Accesorios recomendados</h1>
+    <div class="d-flex flex-wrap justify-content-center">
+      <div class="card mx-3 mb-4" style="width: 18rem;">
+        <img src="img/cargador.webp" class="card-img-top" alt="Cargador">
+        <div class="card-body">
+          <h5 class="card-title">Cargador</h5>
+          <p class="card-text">El adaptador de corriente USB-C de 20 W es muy rápido y eficiente, ideal para cargar tus dispositivos en cualquier lugar.</p>
+        </div>
+      </div>
+
+      <div class="card mx-3 mb-4" style="width: 18rem;">
+        <img src="img/inalambrico.webp" class="card-img-top" alt="Base inalámbrica">
+        <div class="card-body">
+          <h5 class="card-title">Base de carga inalámbrica</h5>
+          <a href="#" class="btn btn-danger mb-2">Oferta</a>
+          <p class="card-text">Sistema de soporte para seguir usando tu smartphone cómodamente mientras se carga. Compatible con carga rápida de 20 W.</p>
+        </div>
+      </div>
+
+      <div class="card mx-3 mb-4" style="width: 18rem;">
+        <img src="img/funda.webp" class="card-img-top" alt="Funda piel">
+        <div class="card-body">
+          <h5 class="card-title">Funda piel</h5>
+          <p class="card-text">Fabricadas en piel europea curtida y teñida con un proceso especial. Suaves al tacto y con botones de aluminio que combinan a la perfección.</p>
+        </div>
+      </div>
+
+      <div class="card mx-3 mb-4" style="width: 18rem;">
+        <img src="img/airpods.jpg" class="card-img-top" alt="AirPods">
+        <div class="card-body">
+          <h5 class="card-title">AirPods</h5>
+          <a href="#" class="btn btn-primary mb-2">Nuevo</a>
+          <p class="card-text">Perfectos si eres amante de la música. Su batería de larga duración asegura una experiencia prolongada.</p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+  <!-- Formulario de sorteo -->
+  <div class="container d-flex justify-content-center align-items-center my-5">
+    <div class="row w-100">
+      <div class="col-md-6">
+        <p class="fs-4"><strong>Participa en el sorteo del Ifone 17</strong></p>
+        <p>Este verano venimos cargados de premios. Antes de irte de vacaciones, ¡participa en nuestro sorteo y podrás llevarte un regalo increíble como un nuevo Ifone 17!</p>
+        <p>Rellena este formulario para ser uno de los afortunados.</p>
+      </div>
+
+      <div class="col-md-6 d-flex justify-content-center">
+        <form class="w-75">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Email</label>
+            <input type="email" class="form-control" id="correo" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-  </div>
-</div> 
+
 </body>
 </html>
