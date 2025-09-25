@@ -1,0 +1,66 @@
+.container {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "producto cantidad unidad total"
+    "p1 c1 u1 t1"
+    "p2 c2 u2 t2"
+    "p3 c3 u3 t3";
+}
+
+.producto { 
+    grid-area: producto;
+
+}
+
+.cantidad { 
+    grid-area: cantidad;
+
+}
+
+.unidad { 
+    grid-area: unidad; 
+
+}
+
+.total { 
+    grid-area: total; 
+
+}
+
+.p1 { grid-area: p1; }
+
+.p2 { grid-area: p2; }
+
+.p3 { grid-area: p3; }
+
+.c1 { 
+    grid-area: c1; 
+    
+    
+}
+
+.c2 { 
+    grid-area: c2; 
+    
+}
+
+.c3 { 
+    grid-area: c3; 
+    
+}
+
+
+.u1 { grid-area: u1; }
+
+.u2 { grid-area: u2; }
+
+.u3 { grid-area: u3; }
+
+.t1 { grid-area: t1; }
+
+.t2 { grid-area: t2; }
+
+.t3 { grid-area: t3; }
