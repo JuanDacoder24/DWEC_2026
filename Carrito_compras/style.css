@@ -10,23 +10,89 @@
     "p3 c3 u3 t3";
 }
 
+.containe2 {  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "total1 precio"
+    "total2 precio2";
+}
+
+.containerp {  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "a1 a2"
+    "a1 a2";
+}
+
+.a1 { grid-area: a1;
+
+}
+
+.a2 { grid-area: a2;
+    padding: 7px;
+    background-color:rgb(233, 233, 233);
+}
+
+
+.total1 { 
+    grid-area: total1; 
+    border-bottom-width: 1px;
+    border-bottom-style:groove;
+    border-bottom-color: rgb(163, 163, 163);
+      font-family: Arial, sans-serif;
+
+}
+
+.total2 { 
+    grid-area: total2;
+      font-family: Arial, sans-serif;
+}
+
+.precio { 
+    grid-area: precio; 
+}
+
+.precio2 { 
+    grid-area: precio2; 
+}
+
+
 .producto { 
     grid-area: producto;
-
+    border-bottom-width: 1px;
+    border-bottom-style:groove;
+    border-bottom-color: rgb(163, 163, 163);
 }
 
 .cantidad { 
     grid-area: cantidad;
-
+    border-bottom-width: 1px;
+    border-bottom-style:groove;
+    border-bottom-color: rgb(163, 163, 163);
+    text-align: center;
 }
 
 .unidad { 
     grid-area: unidad; 
+    border-bottom-width: 1px;
+    border-bottom-style:groove;
+    border-bottom-color: rgb(163, 163, 163);
+    text-align: center;
 
 }
 
 .total { 
     grid-area: total; 
+    border-bottom-width: 1px;
+    border-bottom-style:groove;
+    border-bottom-color: rgb(163, 163, 163);
+    text-align: center;
 
 }
 
@@ -36,21 +102,106 @@
 
 .p3 { grid-area: p3; }
 
-.c1 { 
-    grid-area: c1; 
-    
-    
+.c1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-family: Arial, sans-serif;
 }
 
 .c2 { 
-    grid-area: c2; 
-    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
 }
 
 .c3 { 
-    grid-area: c3; 
-    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: Arial, sans-serif;
 }
+
+.c1 button {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px 15px;
+  color: #555;
+  transition: 0.2s;
+}
+
+.c1 button:hover {
+  color: black;
+}
+
+.c1 input {
+  width: 50px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+
+
+.c2 button {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px 15px;
+  color: #555;
+  transition: 0.2s;
+}
+
+.c2 button:hover {
+  color: black;
+}
+
+.c2 input {
+  width: 50px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+
+.c3 button {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px 15px;
+  color: #555;
+  transition: 0.2s;
+}
+
+.c3 button:hover {
+  color: black;
+}
+
+.c3 input {
+  width: 50px;
+  text-align: center;
+  font-size: 22px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+
+
+
+
+
 
 
 .u1 { grid-area: u1; }
