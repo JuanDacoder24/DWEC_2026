@@ -1,4 +1,5 @@
-class Carrito{
+export default class Carrito{
+    
     constructor(SKU, title, price){
         this.SKU = SKU;
         this.title = title;
@@ -10,7 +11,7 @@ class Carrito{
     }
 
     obtenerInformacionProducto(SKU){
-
+        
     }
 
     obtenerCarrito(){
