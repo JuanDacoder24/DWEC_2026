@@ -1,5 +1,4 @@
-export const 
-    dato={
+export const dato={
         
     currency: "€", 
     products: [ 

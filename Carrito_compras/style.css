@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f8fa;
+  padding: 40px;
+}
+
+h1 {
+  color: #333;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.cantidad {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.cantidad button {
+  padding: 5px 10px;
+  border: none;
+  background: #0078ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cantidad button:hover {
+  background: #005fcc;
+}
+
+input[type="text"] {
+  width: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+#total {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #222;
+}

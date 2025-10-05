@@ -1,47 +1,78 @@
-
-import Carrito from  './Carrito.js'
-import {dato} from './dato.js';
-
+import { dato } from './dato.js';
 console.log("script cargado correctamente");
 
  document.addEventListener('DOMContentLoaded', function(event) {
 
-const tbody = document.getElementById("tbody-productos");
+  const tabla = document.querySelector('#tablaProductos tbody');
+  const tablatexto = document.querySelector('#total');
 
-dato.products.forEach(producto => {
+  let total = 0;
 
-  const tdProducto = document.createElement("td");
-  tdProducto.textContent = producto.title;
+  dato.products.forEach(producto => {
+    const fila = document.createElement('tr');
 
-  const tdCantidad = document.createElement("td");
+    const celdaTitulo = document.createElement('td');
+    celdaTitulo.textContent = producto.title
 
-  const btnMenos = document.createElement("button");
-  btnMenos.textContent = "-";
-  
-  const input = document.createElement("input");
-  input.type = "text";
-  input.value = "1";
-  input.style.width = "40px";
-  input.style.textAlign = "center";
+        //corregir el toFixed, da problemas de error en la consola
 
-  const btnMas = document.createElement("button");
-  btnMas.textContent = "+";
+    const celdaPrecio = document.createElement('td');
+    celdaPrecio.textContent = (parseFloat(producto.price) * cantidad).toFixed(2);
 
-  tdCantidad.appendChild(btnMenos);
-  tdCantidad.appendChild(input);
-  tdCantidad.appendChild(btnMas);
+    const celdaCantidad = document.createElement('td');
+    const divCantidad = document.createElement('div');
+    divCantidad.classList.add('cantidad');
 
-  const tdUnidad = document.createElement("td");
-  tdUnidad.textContent = producto.price + " " + dato.currency;
+    const btnMenos = document.createElement('button');
+    btnMenos.textContent = '-';
 
-  const tdTotal = document.createElement("td");
-  tdTotal.textContent = producto.price + " " + dato.currency;
+    const inputCantidad = document.createElement('input');
+    inputCantidad.type = 'text';
+    inputCantidad.value = 1;
+    inputCantidad.readOnly = true;
 
+    const btnMas = document.createElement('button');
+    btnMas.textContent = '+';
 
-});
+    divCantidad.append(btnMenos, inputCantidad, btnMas);
+    celdaCantidad.append(divCantidad);
 
+    //corregir el toFixed
+    const celdaSubtotal = document.createElement('td');
+    celdaSubtotal.textContent = `${dato.currency}${producto.price.toFixed(2)}`;
 
-});
+    fila.append(celdaSKU, celdaTitulo, celdaPrecio, celdaCantidad, celdaSubtotal);
+    tabla.appendChild(fila);
 
+    btnMas.addEventListener('click', () => {
+    inputCantidad.value++;
+    actualizarSubtotal();
+  });
+
+  btnMenos.addEventListener('click', () => {
+    if (inputCantidad.value > 1) {
+      inputCantidad.value--;
+      actualizarSubtotal();
+    }
+  });
 
     
+  });
+
+function actualizarSubtotal() {
+    const subtotal = producto.price * inputCantidad.value;
+    celdaSubtotal.textContent = `${dato.currency}${subtotal.toFixed(2)}`;
+    calcularTotal();
+  }
+
+  calcularTotal();
+});
+
+  function calcularTotal() {
+  total = 0;
+  document.querySelectorAll('#tablaProductos tbody tr').forEach(fila => {
+    const subtotalTexto = fila.children[4].textContent.replace(dato.currency, '');
+    total += parseFloat(subtotalTexto);
+  });
+  totalTexto.textContent = `Total: ${dato.currency}${total.toFixed(2)}`;
+}
