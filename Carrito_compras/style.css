@@ -22,32 +22,7 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-.cantidad {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
 
-.cantidad button {
-  padding: 5px 10px;
-  border: none;
-  background: #0078ff;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.cantidad button:hover {
-  background: #005fcc;
-}
-
-input[type="text"] {
-  width: 40px;
-  text-align: center;
-  border: 1px solid #ccc;
-}
 
 #total {
   text-align: center;

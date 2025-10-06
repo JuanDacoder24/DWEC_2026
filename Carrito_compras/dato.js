@@ -4,7 +4,7 @@ export const dato={
     products: [ 
                 { 
                     SKU: "0K3QOSOV4V", 
-                    title: "iFhone 13 Pro", 
+                    title: "Iphone 13 Pro", 
                     price: "938.99",
                 }, 
                 { 
