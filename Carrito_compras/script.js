@@ -1,119 +1,109 @@
 import { dato } from './dato.js';
-console.log("script cargado correctamente");
 
- document.addEventListener('DOMContentLoaded', function(event) {
+const tablaProductos = document.querySelector('#tablaProductos tbody');
+const tablaTotal = document.querySelector('#tablaTotal tbody');
+const totalFinal = document.getElementById('totalFinal');
 
-  const tabla = document.querySelector('#tablaProductos tbody');
-  const tablatexto = document.querySelector('#total');
+dato.products.forEach(producto => {
+  const fila = document.createElement('tr');
 
-  let total = 0;
+  const tdNombre = document.createElement('td');
+  tdNombre.innerHTML = `<strong>${producto.title}</strong><br><small>Ref: ${producto.SKU}</small>`;
 
-  dato.products.forEach(producto => {
-    const fila = document.createElement('tr');
-    const celdaCantidad = document.createElement('td');
-    const divCantidad = document.createElement('div');
+  const tdCantidad = document.createElement('td');
+  const divCantidad = document.createElement('div');
+  divCantidad.classList.add('cantidad');
 
-    const celdaTitulo = document.createElement('td');
-    celdaTitulo.textContent = producto.title;
-    celdaTitulo.style.textAlign = "left";
-    celdaTitulo.style.fontSize = "19px";
-
-
-    const divCeldaSKU = document.createElement('div');
-    divCeldaSKU.textContent = 'Ref: ' + producto.SKU;
-    divCeldaSKU.style.textAlign = "left";
-    divCeldaSKU.style.fontSize = "12px";
-
-
-    celdaTitulo.append(divCeldaSKU);
-
-    //Boton menos
-    const btnMenos = document.createElement('button');
-    btnMenos.textContent = '-';
-    Object.assign(btnMenos.style, {
-    backgroundColor: '#dc3545',
-    color: 'white',
-    border: 'none',
-    padding: '8px 15px',
-    fontSize: '18px',
-    cursor: 'pointer',
-    borderRadius: '50px',
-});
-
-    const inputCantidad = document.createElement('input');
-    inputCantidad.type = 'number';
-    inputCantidad.value = 0;
-    inputCantidad.readOnly = true;
-    Object.assign(inputCantidad.style, {
-    width: '60px',
-    textAlign: 'center',
-    border: '2px solid #ddd',
-    borderLeft: 'none',
-    borderRight: 'none',
-    padding: '8px',
-    borderRadius: '50px',
-});
-    
-    //Boton mas
-    const btnMas = document.createElement('button');
-    btnMas.textContent = '+';
-    Object.assign(btnMas.style, {
-    backgroundColor: '#28a745',
-    color: 'white',
-    border: 'none',
-    padding: '8px 15px',
-    fontSize: '18px',
-    cursor: 'pointer',
-    borderRadius: '50px',
-});
-
-    divCantidad.append(btnMenos, inputCantidad, btnMas);
-    celdaCantidad.append(divCantidad);
-
-    const celdaPrecio = document.createElement('td');
-    celdaPrecio.textContent = producto.price + ' €';
-
-    const celdaSubtotal = document.createElement('td');
-    celdaSubtotal.textContent = ` 0.00 ${dato.currency}`;
+  const btnMenos = document.createElement('button');
+  btnMenos.textContent = '−';
+  Object.assign(btnMenos.style, {
+      backgroundColor: '#dc3545',
+      color: 'white',
+      border: 'none',
+      padding: '8px 15px',
+      fontSize: '18px',
+      cursor: 'pointer',
+      borderRadius: '50px',
+    });
 
 
-    fila.append(celdaTitulo, celdaPrecio, celdaCantidad, celdaSubtotal);
-    tabla.append(fila);
-    
-    function actualizarSubtotal() {
-    const subtotal = producto.price * inputCantidad.value;
-    celdaSubtotal.textContent = `${dato.currency}${subtotal.toFixed(2)}`;
-    calcularTotal();
-  }
+  const input = document.createElement('input');
+  input.type = 'number';
+  input.value = 0;
+  input.min = 0;
+  Object.assign(input.style, {
+      width: '60px',
+      textAlign: 'center',
+      border: '2px solid #ddd',
+      borderLeft: 'none',
+      borderRight: 'none',
+      padding: '8px',
+      borderRadius: '50px',
+    });
 
-    btnMas.addEventListener('click', () => {
-    inputCantidad.value++;
-    actualizarSubtotal();
+
+  const btnMas = document.createElement('button');
+  btnMas.textContent = '+';
+  Object.assign(btnMas.style, {
+      backgroundColor: '#28a745',
+      color: 'white',
+      border: 'none',
+      padding: '8px 15px',
+      fontSize: '18px',
+      cursor: 'pointer',
+      borderRadius: '50px',
+    });
+
+
+  divCantidad.append(btnMenos, input, btnMas);
+  tdCantidad.appendChild(divCantidad);
+
+  const tdUnidad = document.createElement('td');
+  tdUnidad.textContent = `${producto.price}${dato.currency}`;
+
+  const tdTotal = document.createElement('td');
+  tdTotal.textContent = `0${dato.currency}`;
+  tdTotal.style.width = "100px";
+  tdTotal.style.textAlign = "right";
+
+  fila.append(tdNombre, tdUnidad, tdCantidad, tdTotal);
+  tablaProductos.appendChild(fila);
+
+  // Eventos de botones
+  btnMas.addEventListener('click', () => {
+    input.value++;
+    actualizarTotales();
   });
 
   btnMenos.addEventListener('click', () => {
-    if (inputCantidad.value > 0) {
-      inputCantidad.value--;
-      actualizarSubtotal();
-    }
+    if (input.value > 0) input.value--;
+    actualizarTotales();
   });
 
-    
-  });
-
-  calcularTotal();
+  input.addEventListener('input', actualizarTotales);
 });
 
-  function calcularTotal() {
-  total = 0;
-  document.querySelectorAll('#tablaProductos tbody tr').forEach(fila => {
-    const subtotalTexto = fila.children[3].textContent; 
-    const numero = subtotalTexto.replace('€', '').trim();
-    const subtotal = parseFloat(numero);
-    if (!isNaN(subtotal)) {
-      total += subtotal;
+function actualizarTotales() {
+  tablaTotal.innerHTML = '';
+  let totalGeneral = 0;
+
+  [...tablaProductos.querySelectorAll('tr')].forEach(fila => {
+    const nombre = fila.children[0].querySelector('strong').textContent;
+    const precioStr = fila.children[1].textContent.replace(dato.currency, '').trim();
+    const precio = parseFloat(precioStr) || 0;
+    const cantidad = parseInt(fila.querySelector('input').value) || 0;
+    
+    const total = precio * cantidad;
+    fila.children[3].textContent = `${isNaN(total) ? 0 : total.toFixed(2)}${dato.currency}`;
+    if (cantidad > 0) {
+      const filaResumen = document.createElement('tr');
+      filaResumen.innerHTML = `
+        <td>${nombre}</td>
+        <td>${isNaN(total) ? 0 : total.toFixed(2)}${dato.currency}</td>
+      `;
+      tablaTotal.appendChild(filaResumen);
+      totalGeneral += total;
     }
   });
-  
-  totalTexto.textContent = `Total: ${dato.currency}${total.toFixed(2)}`;
+  totalFinal.textContent = `TOTAL ${isNaN(totalGeneral) ? 0 : totalGeneral.toFixed(2)}${dato.currency}`;
 }

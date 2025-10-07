@@ -7,23 +7,34 @@
   <link rel="stylesheet" href="style.css">
 
 
-  <title>Carrito</title>
+  <title>agoodshop</title>
 </head>
 <body>
   <h1>agoodshop</h1>
-  <table id="tablaProductos">
-    <thead>
-      <tr>
-        <th>Producto</th>
-        <th>Unidad</th>
-        <th>Cantidad</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <main class="contenedor">
+    <section class="productos">
+      <table id="tablaProductos">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
 
-  <h3 id="total">Total: €0.00</h3>
+    <aside class="resumen">
+      <h2>Total</h2>
+      <table id="tablaTotal">
+        <tbody></tbody>
+      </table>
+      <hr>
+      <h3 id="totalFinal">TOTAL €0.00</h3>
+    </aside>
+  </main>
 
 <script type="module" src="script.js"></script>
 
