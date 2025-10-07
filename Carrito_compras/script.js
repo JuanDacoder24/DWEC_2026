@@ -53,7 +53,7 @@ dato.products.forEach(producto => {
       cursor: 'pointer',
       borderRadius: '50px',
     });
-
+    
 
   divCantidad.append(btnMenos, input, btnMas);
   tdCantidad.appendChild(divCantidad);
@@ -107,3 +107,4 @@ function actualizarTotales() {
   });
   totalFinal.textContent = `TOTAL ${isNaN(totalGeneral) ? 0 : totalGeneral.toFixed(2)}${dato.currency}`;
 }
+
