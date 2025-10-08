@@ -4,9 +4,12 @@ const tablaProductos = document.querySelector('#tablaProductos tbody');
 const tablaTotal = document.querySelector('#tablaTotal tbody');
 const totalFinal = document.getElementById('totalFinal');
 
-dato.products.forEach(producto => {
+fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
+  .then(response => response.json())
+  .then(posts => {
+    console.log(posts);
+    posts.forEach(producto => {
   const fila = document.createElement('tr');
-
   const tdNombre = document.createElement('td');
   tdNombre.innerHTML = `<strong>${producto.title}</strong><br><small>Ref: ${producto.SKU}</small>`;
 
@@ -107,4 +110,14 @@ function actualizarTotales() {
   });
   totalFinal.textContent = `TOTAL ${isNaN(totalGeneral) ? 0 : totalGeneral.toFixed(2)}${dato.currency}`;
 }
+  })
+  
+  .catch(error => {
+    console.error("Error al obtener los datos:", error);
+  });
+
+ 
+
+
+
 
