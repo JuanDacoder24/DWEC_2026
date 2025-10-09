@@ -4,10 +4,12 @@ const tablaProductos = document.querySelector('#tablaProductos tbody');
 const tablaTotal = document.querySelector('#tablaTotal tbody');
 const totalFinal = document.getElementById('totalFinal');
 
+//agregamos el fetch para que lea la api
 fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
   .then(response => response.json())
   .then(posts => {
     console.log(posts);
+    //automaticamente modifico mi foreach para que coincida con mi peticion y lea los datos de la api y ya no de la clase dato
     posts.forEach(producto => {
   const fila = document.createElement('tr');
   const tdNombre = document.createElement('td');
@@ -17,6 +19,7 @@ fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
   const divCantidad = document.createElement('div');
   divCantidad.classList.add('cantidad');
 
+  //boton menos
   const btnMenos = document.createElement('button');
   btnMenos.textContent = '−';
   Object.assign(btnMenos.style, {
@@ -29,7 +32,7 @@ fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
       borderRadius: '50px',
     });
 
-
+  // input
   const input = document.createElement('input');
   input.type = 'number';
   input.value = 0;
@@ -44,7 +47,7 @@ fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
       borderRadius: '50px',
     });
 
-
+  //boton mas 
   const btnMas = document.createElement('button');
   btnMas.textContent = '+';
   Object.assign(btnMas.style, {
@@ -57,9 +60,9 @@ fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
       borderRadius: '50px',
     });
     
-
+  //hacemnos un append para agregar en la columna de cantidad
   divCantidad.append(btnMenos, input, btnMas);
-  tdCantidad.appendChild(divCantidad);
+  tdCantidad.append(divCantidad);
 
   const tdUnidad = document.createElement('td');
   tdUnidad.textContent = `${producto.price}${dato.currency}`;
@@ -87,9 +90,11 @@ fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
 });
 
 function actualizarTotales() {
+  //innerHTML para limpiar el contenido de la tabla de totales
   tablaTotal.innerHTML = '';
   let totalGeneral = 0;
 
+  //busca todas las etiquetas tr dentro de tablaProducto, mientras que el foreach itera sobre cada fila de la tabla
   [...tablaProductos.querySelectorAll('tr')].forEach(fila => {
     const nombre = fila.children[0].querySelector('strong').textContent;
     const precioStr = fila.children[1].textContent.replace(dato.currency, '').trim();
