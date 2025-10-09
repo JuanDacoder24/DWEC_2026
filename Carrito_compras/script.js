@@ -5,15 +5,15 @@ const tablaTotal = document.querySelector('#tablaTotal tbody');
 const totalFinal = document.getElementById('totalFinal');
 
 //agregamos el fetch para que lea la api
-fetch('https://68e6684821dd31f22cc58009.mockapi.io/carrito/productos')
+fetch('http://localhost:8080/api/carrito')
   .then(response => response.json())
   .then(posts => {
     console.log(posts);
     //automaticamente modifico mi foreach para que coincida con mi peticion y lea los datos de la api y ya no de la clase dato
-    posts.forEach(producto => {
+    posts.products.forEach(producto => {
   const fila = document.createElement('tr');
   const tdNombre = document.createElement('td');
-  tdNombre.innerHTML = `<strong>${producto.title}</strong><br><small>Ref: ${producto.SKU}</small>`;
+  tdNombre.innerHTML = `<strong>${producto.title}</strong><br><small>Ref: ${producto.sku}</small>`;
 
   const tdCantidad = document.createElement('td');
   const divCantidad = document.createElement('div');
