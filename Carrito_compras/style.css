@@ -23,12 +23,54 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-
-
 #total {
   text-align: center;
   margin-top: 20px;
   font-size: 1.3rem;
   color: #222;
   border-radius: 20px;
+}
+
+.btn-mas,.btn-menos {
+  border: none;
+  padding: 8px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50px;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.btn-mas {
+  background-color: #28a745;
+}
+
+.btn-mas:hover {
+  background-color: #218838;
+}
+
+.btn-menos {
+  background-color: #dc3545;
+}
+
+.btn-menos:hover {
+  background-color: #c82333;
+}
+
+.input-cantidad {
+  width: 60px;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-left: none;
+  border-right: none;
+  padding: 8px;
+  border-radius: 50px;
+  font-size: 16px;
+}
+
+
+div {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
 }
