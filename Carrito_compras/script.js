@@ -4,8 +4,8 @@ const tablaProductos = document.querySelector('#tablaProductos tbody');
 const tablaTotal = document.querySelector('#tablaTotal tbody');
 const totalFinal = document.getElementById('totalFinal');
 
-
-fetch('http://localhost:8080/api/carrito')
+document.addEventListener("DOMContentLoaded", () => { 
+  fetch('http://localhost:8080/api/carrito')
   .then(response => response.json())
   .then(posts => {
     posts.products.forEach(producto => {
@@ -65,6 +65,8 @@ fetch('http://localhost:8080/api/carrito')
 
       input.addEventListener('input', actualizarTotales);
     });
+
+});
 
     function actualizarTotales() {
       // Limpia la tabla de totales
