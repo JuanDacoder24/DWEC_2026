@@ -1,0 +1,27 @@
+<section>
+    <div>
+        <div class="formulario">
+            <label for="id">ID tarea: </label>
+            <input type="text" id="id" placeholder="Ingrese el ID de la tarea" [(ngModel)]="newTarea.id"/>
+            <br/>
+            <label for="nombre">Nombre de la tarea: </label>
+            <input type="text" id="nombre" placeholder="Ingrese el nombre de la tarea" [(ngModel)]="newTarea.nombre"/>
+            <br/>
+            <label for="descripcion">Descripcion de la tarea: </label>
+            <input type="text" id="descripcion" placeholder="Ingrese la descripcion de la tarea" [(ngModel)]="newTarea.descripcion"/>
+        </div>
+        <br/>
+        <button (click)="guardarDatos()" class="btn-guardar">Guardar</button>
+    </div>
+    <hr/>
+    <div>
+    <!-- Para tener mas seguridad en el codigo y no aplicar un innerHTML, obte por la opcion de usar ngfor -->    
+    <!-- Por cada tarea en el array se creara este bloque de html -->
+    <div *ngFor="let tarea of arrTareas" class="tarea-item">
+      <span>{{ tarea.id }} - {{ tarea.nombre }} - {{ tarea.descripcion }}</span>
+      
+      <!-- Boton para eliminar tarea -->
+      <button (click)="eliminarTarea(tarea.id)" class="btn-eliminar">Eliminar</button>
+    </div>
+  </div>
+</section>
