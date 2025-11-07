@@ -7,6 +7,7 @@ import { Blog } from '../blog/blog';
   styleUrl: './ventana.css',
 })
 export class Ventana {
+  
 
   newNoticia: boolean = true; 
 

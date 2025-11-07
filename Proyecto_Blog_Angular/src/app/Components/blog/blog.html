@@ -13,8 +13,31 @@
     </div>
     <div class="mb-3">
         <label class="fecha">Fecha de la publicacion</label>
-        <input type="text" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion" [(ngModel)]="newNoticia.fecha">
+        <input type="date" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion" [(ngModel)]="newNoticia.fecha">
     </div>
 
     <button (click)="guardarDatos()" class="btn-guardar">GUARDAR</button>
+
 </section>
+    @if(arrayNoticias.length === 0){
+    <h2 class="text-center mb-4">No hay noticias disponibles</h2>
+
+    }@else {
+    <h2 class="text-center mb-4">Últimas Noticias</h2>
+    <section class="container">
+    <div class="container">
+        @for(noticias of arrayNoticias; track noticias.id){
+        <div class="card">
+            <div class="card-header fs-2">{{noticias.titulo}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{noticias.url}}</h5>
+                <p class="card-text">{{noticias.cuerpo}}</p>
+                <p class="card-text">{{noticias.fecha}}</p>
+            </div>
+        </div>
+        }
+    </div>
+</section>
+} 
+    
+
