@@ -30,7 +30,7 @@
         <div class="card">
             <div class="card-header fs-2">{{noticias.titulo}}</div>
             <div class="card-body">
-                <h5 class="card-title">{{noticias.url}}</h5>
+                <img [src]="noticias.url" [alt]="noticias.titulo" class="img-fluid mb-2 rounded img-safe img-preview">
                 <p class="card-text">{{noticias.cuerpo}}</p>
                 <p class="card-text">{{noticias.fecha}}</p>
             </div>

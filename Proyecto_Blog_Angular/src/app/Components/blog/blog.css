@@ -30,3 +30,11 @@ section {
 .btn-guardar:active {
   transform: translateY(0);
 }
+
+.card {
+  margin-bottom: 20px; 
+}
+.container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
