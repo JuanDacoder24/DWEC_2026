@@ -1,38 +1,36 @@
 <section class="container">
-    <!-- falta comprobar que todos los datos están siendo rellenado y que ninguno está vacío, avisando al usuario si este nointroduce ningún dato o falta alguno. Todos los datos son obligatorios. Si el usuario
-    no rellena todos los datos del formulario no debemos insertar la noticia y no se veráreflejada dentro de mi listado-->
-
     <div class="mb-3">
         <label class="titulo">Titulo</label>
-        <input type="text" class="form-control" id="titulo" placeholder="Ingresa el titulo de la noticia" [(ngModel)]="newNoticia.titulo">
+        <input type="text" class="form-control" id="titulo" placeholder="Ingresa el titulo de la noticia"
+            [(ngModel)]="newNoticia.titulo">
     </div>
     <div class="mb-3">
         <label class="url">Imagen</label>
-        <input type="text" class="form-control" id="url" placeholder="Ingresa el URL de la imagen" [(ngModel)]="newNoticia.url">
+        <input type="text" class="form-control" id="url" placeholder="Ingresa el URL de la imagen"
+            [(ngModel)]="newNoticia.url">
     </div>
     <div class="mb-3">
         <label class="cuerpo">Cuerpo de la noticia</label>
-        <input type="text" class="form-control" id="cuerpo" placeholder="Describe la noticia" [(ngModel)]="newNoticia.cuerpo">
+        <input type="text" class="form-control" id="cuerpo" placeholder="Describe la noticia"
+            [(ngModel)]="newNoticia.cuerpo">
     </div>
     <div class="mb-3">
         <label class="fecha">Fecha de la publicacion</label>
-        <input type="date" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion" [(ngModel)]="newNoticia.fecha">
+        <input type="date" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion"
+            [(ngModel)]="newNoticia.fecha">
     </div>
 
     @if (!newNoticia.titulo || !newNoticia.url || !newNoticia.cuerpo || !newNoticia.fecha) {
-        <p class="text-danger">Todos los campos son obligatorios.</p>
+    <p class="text-danger">Todos los campos son obligatorios.</p>
     }@else {
-        <button (click)="guardarDatos()" class="btn-guardar">GUARDAR</button>
+    <button (click)="guardarDatos()" class="btn-guardar">GUARDAR</button>
     }
-    
-
 </section>
-    @if(arrayNoticias.length === 0){
-    <h2 class="text-center mb-4">No hay noticias disponibles</h2>
 
-    }@else {
-    <h2 class="text-center mb-4">Últimas Noticias</h2>
-    <section class="container">
+
+
+<h2 class="text-center mb-4">Últimas Noticias</h2>
+<section class="container">
     <div class="container">
         @for(noticias of arrayNoticias; track noticias.id){
         <div class="card">
@@ -46,6 +44,3 @@
         }
     </div>
 </section>
-} 
-    
-
