@@ -1,46 +1,52 @@
-<section class="container">
-    <div class="mb-3">
-        <label class="titulo">Titulo</label>
-        <input type="text" class="form-control" id="titulo" placeholder="Ingresa el titulo de la noticia"
-            [(ngModel)]="newNoticia.titulo">
-    </div>
-    <div class="mb-3">
-        <label class="url">Imagen</label>
-        <input type="text" class="form-control" id="url" placeholder="Ingresa el URL de la imagen"
-            [(ngModel)]="newNoticia.url">
-    </div>
-    <div class="mb-3">
-        <label class="cuerpo">Cuerpo de la noticia</label>
-        <input type="text" class="form-control" id="cuerpo" placeholder="Describe la noticia"
-            [(ngModel)]="newNoticia.cuerpo">
-    </div>
-    <div class="mb-3">
-        <label class="fecha">Fecha de la publicacion</label>
-        <input type="date" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion"
-            [(ngModel)]="newNoticia.fecha">
-    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <section>
+                <h2 class="mb-4">Crear Noticia</h2>
+                <div class="mb-3">
+                    <label class="titulo">Titulo</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Ingresa el titulo de la noticia"
+                        [(ngModel)]="newNoticia.titulo">
+                </div>
+                <div class="mb-3">
+                    <label class="url">Imagen</label>
+                    <input type="text" class="form-control" id="url" placeholder="Ingresa el URL de la imagen"
+                        [(ngModel)]="newNoticia.url">
+                </div>
+                <div class="mb-3">
+                    <label class="cuerpo">Cuerpo de la noticia</label>
+                    <input type="text" class="form-control" id="cuerpo" placeholder="Describe la noticia"
+                        [(ngModel)]="newNoticia.cuerpo">
+                </div>
+                <div class="mb-3">
+                    <label class="fecha">Fecha de la publicacion</label>
+                    <input type="date" class="form-control" id="fecha" placeholder="Ingresa la fecha de publicacion"
+                        [(ngModel)]="newNoticia.fecha">
+                </div>
 
-    @if (!newNoticia.titulo || !newNoticia.url || !newNoticia.cuerpo || !newNoticia.fecha) {
-    <p class="text-danger">Todos los campos son obligatorios.</p>
-    }@else {
-    <button (click)="guardarDatos()" class="btn-guardar">GUARDAR</button>
-    }
-</section>
-
-
-
-<h2 class="text-center mb-4">Últimas Noticias</h2>
-<section class="container">
-    <div class="container">
-        @for(noticias of arrayNoticias; track noticias.id){
-        <div class="card">
-            <div class="card-header fs-2">{{noticias.titulo}}</div>
-            <div class="card-body">
-                <img [src]="noticias.url" [alt]="noticias.titulo" class="img-fluid mb-2 rounded img-safe img-preview">
-                <p class="card-text">{{noticias.cuerpo}}</p>
-                <p class="card-text">{{noticias.fecha}}</p>
-            </div>
+                @if (!newNoticia.titulo || !newNoticia.url || !newNoticia.cuerpo || !newNoticia.fecha) {
+                <p class="text-danger">Todos los campos son obligatorios.</p>
+                }@else {
+                <button (click)="guardarDatos()" class="btn-guardar">GUARDAR</button>
+                }
+            </section>
         </div>
-        }
+
+        <div class="col-md-8">
+            <section>
+                <h2 class="text-center mb-4">Últimas Noticias</h2>
+                @for(noticias of arrayNoticias; track noticias.id){
+                <div class="card mb-3">
+                    <div class="card-header fs-2">{{noticias.titulo}}</div>
+                    <div class="card-body">
+                        <img [src]="noticias.url" [alt]="noticias.titulo" class="img-fluid mb-2 rounded img-safe img-preview">
+                        <p class="card-text">{{noticias.cuerpo}}</p>
+                        <p class="card-text">{{noticias.fecha}}</p>
+                    </div>
+                </div>
+                }
+            </section>
+        </div>
+        
     </div>
-</section>
+</div>
