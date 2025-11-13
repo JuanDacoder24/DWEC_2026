@@ -1,0 +1,23 @@
+<section>
+    <table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Producto</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Unidad</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  @for(productos of arrayProductos; track productos.sku){
+    <tr>
+      <td>{{productos.sku}}</td>
+      <td>{{productos.title}}</td>
+      <td>h</td>
+      <td>h</td>
+    </tr>
+  }
+  </tbody>
+  
+</table>
+</section>
