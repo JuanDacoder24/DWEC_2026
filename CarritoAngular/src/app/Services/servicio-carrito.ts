@@ -12,14 +12,14 @@ export class ServicioCarrito {
   constructor(){
     this.arrayProductos = [
       {
-        sku: "123",
-        title: "iphone",
-        price: "",
-    }
+        sku: "0K3QOSOV4V",
+        title: "Iphone 13 Pro",
+        price: "938.99",
+      },
+
   ]
   this.currency = "€";
   }
-
 
   getAll(): IProducto[]{
     return this.arrayProductos;
