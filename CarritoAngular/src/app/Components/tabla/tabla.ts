@@ -22,4 +22,6 @@ export class Tabla {
     this.arrayProductos = this.ServicioCarrito.getAll()
   }
 
+  
+
 }

@@ -1,23 +1,27 @@
 <section>
-    <table class="table mt-5">
-  <thead>
-    <tr>
-      <th scope="col">Producto</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Unidad</th>
-      <th scope="col">Total</th>
-    </tr>
-  </thead>
-  <tbody>
-  @for(productos of arrayProductos; track productos.sku){
-    <tr>
-      <td>SKU: {{productos.sku}} <br>{{productos.title}}</td>
-      <td>c</td>
-      <td>u</td>
-      <td>t</td>
-    </tr>
-  }
-  </tbody>
-  
-</table>
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Unidad</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(productos of arrayProductos; track productos.sku){
+      <tr>
+        <td>SKU: {{productos.sku}} <br>{{productos.title}}</td>
+        <td>
+          <button class="btn btn-danger" type="button" id="menos">-</button>
+          <input id="cantidad" type="text" style="text-align: center;" value="0">
+          <button class="btn btn-success" type="button" id="mas">+</button>
+        </td>
+        <td>u</td>
+        <td>t</td>
+      </tr>
+      }
+    </tbody>
+
+  </table>
 </section>
