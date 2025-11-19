@@ -16,7 +16,9 @@ export class ServicioCarrito {
       {
         sku: "0K3QOSOV4V",
         title: "Iphone 13 Pro",
-        price: "938.99",
+        price: 938.99,
+        cantidad: 0,
+        total: 0
       },
 
   ]

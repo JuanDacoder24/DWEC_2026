@@ -1,5 +1,7 @@
 export interface IProducto {
     sku: string;
     title: string;
-    price: string;
+    price: number;
+    cantidad: number;
+    total: number
 }
