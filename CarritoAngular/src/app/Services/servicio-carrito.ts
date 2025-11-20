@@ -12,17 +12,23 @@ export class ServicioCarrito {
   
 
   constructor(){
-    this.arrayProductos = [
-      {
-        sku: "0K3QOSOV4V",
-        title: "Iphone 13 Pro",
-        price: 938.99,
-        cantidad: 0,
-        total: 0
-      },
+    this.arrayProductos = []
 
-  ]
-  this.currency = "€";
+    this.currency = "€";
+
+    fetch('http://localhost:8080/api/carrito')
+    .then(response => response.json())
+    .then(data => {
+      this.currency = data.currency;
+      data.forEach((item: any) => {
+        let producto: IProducto = {
+          sku: item.sku,
+          title: item.title,
+          price: item.price,
+        };
+        this.arrayProductos.push(producto);
+      });
+    });
   }
 
   getAll(): IProducto[]{

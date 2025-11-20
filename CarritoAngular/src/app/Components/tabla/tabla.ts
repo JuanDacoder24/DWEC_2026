@@ -22,23 +22,14 @@ export class Tabla {
     this.arrayProductos = this.ServicioCarrito.getAll()
   }
 
-  sumar(producto: IProducto) {
-    if (!producto.cantidad) producto.cantidad = 0;
-    producto.cantidad++;
-    this.actualizarTotal(producto);
+  btnSumar(): void {
+
   }
 
-  restar(producto: IProducto) {
-    if (!producto.cantidad) producto.cantidad = 0;
-    if (producto.cantidad > 0) producto.cantidad--;
+  btnRestar(): void {
 
-    this.actualizarTotal(producto);
   }
 
-  actualizarTotal(producto: IProducto) {
-    if (!producto.price) return;
-    producto.total = producto.cantidad * producto.price;
-  }
 
   
 
