@@ -9,8 +9,6 @@ export class ServicioCarrito {
   private arrayProductos: IProducto[];
   private currency: string;
 
-  
-
   constructor(){
     this.arrayProductos = []
 
@@ -20,12 +18,7 @@ export class ServicioCarrito {
     .then(response => response.json())
     .then(data => {
       this.currency = data.currency;
-      data.forEach((item: any) => {
-        let producto: IProducto = {
-          sku: item.sku,
-          title: item.title,
-          price: item.price,
-        };
+      data.products.forEach((producto: IProducto) => {
         this.arrayProductos.push(producto);
       });
     });
@@ -35,4 +28,16 @@ export class ServicioCarrito {
     return this.arrayProductos;
   }
   
+  getCurrency(): string{
+    return this.currency;
+  }
+
+  //probar
+  deleteBySku(sku :string): void{
+    let i = this.arrayProductos.findIndex(producto => producto.sku == sku);
+    if (i != -1 && i >= 0 && i < this.arrayProductos.length){
+      this.arrayProductos.splice(i,1)
+    }
+  }
+
 }

@@ -1,6 +1,6 @@
+import { IProducto } from './../../Interfaces/iproducto.interface';
 import { ServicioCarrito } from './../../Services/servicio-carrito';
 import { Component, inject } from '@angular/core';
-import { IProducto } from '../../Interfaces/iproducto.interface';
 
 @Component({
   selector: 'app-tabla',
@@ -13,24 +13,24 @@ export class Tabla {
   ServicioCarrito = inject(ServicioCarrito);
 
   arrayProductos: IProducto [];
+  currency: string;
   
   constructor(){
     this.arrayProductos = [];
+    this.currency = '';
   }
 
   ngOnInit(): void{
-    this.arrayProductos = this.ServicioCarrito.getAll()
+    this.arrayProductos = this.ServicioCarrito.getAll();
+    this.currency = this.ServicioCarrito.getCurrency();
   }
 
   btnSumar(): void {
-
+    
   }
 
   btnRestar(): void {
 
-  }
-
-
-  
+  }  
 
 }

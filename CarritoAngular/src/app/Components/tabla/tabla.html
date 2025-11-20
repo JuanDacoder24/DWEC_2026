@@ -1,5 +1,5 @@
 <section>
-  <table class="table mt-5">
+  <table class="table mt-5 table-bordered shadow">
     <thead>
       <tr>
         <th scope="col">Producto</th>
@@ -13,9 +13,11 @@
       <tr>
         <td>SKU: {{productos.sku}} <br>{{productos.title}}</td>
         <td>
-          
+          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar()">-</button>
+          <input id="cantidad" type="text" class="text-center" value="0">
+          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar()">+</button>
         </td>
-        <td>u</td>
+        <td>€ {{productos.price}}</td>
         <td>t</td>
       </tr>
       }
