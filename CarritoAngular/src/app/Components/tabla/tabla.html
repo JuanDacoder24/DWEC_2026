@@ -9,13 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      @for(productos of arrayProductos; track productos.sku){
+      @for(productos of arrayProductos; track productos.sku; let i = $index){
       <tr>
-        <td>SKU: {{productos.sku}} <br>{{productos.title}}</td>
+        <td><h2>{{productos.title}}</h2><p>SKU: {{productos.sku}} </p><br>
         <td>
-          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar()">-</button>
-          <input id="cantidad" type="text" class="text-center" value="0">
-          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar()">+</button>
+          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar(i)">-</button>
+          <input id="cantidad" type="text" class="text-center" [value] = "cantidad[i]">
+          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar(i)">+</button>
         </td>
         <td>€ {{productos.price}}</td>
         <td>t</td>

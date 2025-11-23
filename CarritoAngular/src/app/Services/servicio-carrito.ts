@@ -11,7 +11,7 @@ export class ServicioCarrito {
 
   constructor(){
     this.arrayProductos = []
-
+    
     this.currency = "€";
 
     fetch('http://localhost:8080/api/carrito')
@@ -31,6 +31,8 @@ export class ServicioCarrito {
   getCurrency(): string{
     return this.currency;
   }
+
+  
 
   //probar
   deleteBySku(sku :string): void{
