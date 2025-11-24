@@ -11,17 +11,18 @@
     <tbody>
       @for(productos of arrayProductos; track productos.sku; let i = $index){
       <tr>
-        <td><h2>{{productos.title}}</h2><p>SKU: {{productos.sku}} </p><br>
         <td>
-          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar()">-</button>
-          <input id="cantidad" type="text" class="text-center" [value] = "">
-          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar()">+</button>
+          <h2>{{productos.title}}</h2>
+          <p>SKU: {{productos.sku}} </p><br>
+        <td>
+          <button class="btn btn-danger shadow" type="button" (click)="btnRestar(productos.sku)">-</button>
+          <input type="text" class="text-center" id="cantidad" value="{{cuantity[productos.sku]}}">
+          <button class="btn btn-success shadow" type="button" (click)="btnSumar(productos.sku)">+</button>
         </td>
         <td>€ {{productos.price}}</td>
-        <td>t</td>
+        <td>{{(productos.price * (cuantity[productos.sku] ?? 0)).toFixed(2)}}{{this.ServicioCarrito.getCurrency()}}</td>
       </tr>
       }
     </tbody>
-
   </table>
 </section>

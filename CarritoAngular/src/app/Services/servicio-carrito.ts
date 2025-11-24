@@ -24,6 +24,7 @@ export class ServicioCarrito {
     .then(data => {
       this.currency = data.currency;
       data.products.forEach((producto: IProducto) => {
+        // No modificamos la interfaz; el componente mantiene cantidades por sku.
         this.arrayProductos.push(producto);
       });
     });
@@ -45,26 +46,30 @@ export class ServicioCarrito {
     return this.productosAñadidos;
   }
 
+  getCantidad(){
+    return this.cantidad;
+  }
+
   addProduct(producto: any){
-    let i = this.productosAñadidos.findIndex(producto => producto.sku === producto.sku);
-    if(i ! == -1){
+    const i = this.productosAñadidos.findIndex(p => p.sku === producto.sku);
+    if (i !== -1) {
       this.productosAñadidos[i].cantidad = producto.cantidad;
-    }else{
-      this.productosAñadidos.push(producto);
+    } else {
+      this.productosAñadidos.push({ ...producto });
     }
-    this.precioTotal += producto.price;
+    this.precioTotal = this.productosAñadidos.reduce((acc, p) => acc + (p.price * (p.cantidad ?? 0)), 0);
   }  
 
   eliminarProducto(producto: any) {
-    let i = this.productosAñadidos.findIndex(p => p.sku === producto.sku); 
+    const i = this.productosAñadidos.findIndex(p => p.sku === producto.sku);
     if (i !== -1) {
-      if (producto.cantidad === 0) { 
+      if (producto.cantidad === 0) {
         this.productosAñadidos.splice(i, 1);
       } else {
-        this.productosAñadidos[i].cantidad = producto.cantidad; 
+        this.productosAñadidos[i].cantidad = producto.cantidad;
       }
     }
-    this.precioTotal -= producto.price; 
+    this.precioTotal = this.productosAñadidos.reduce((acc, p) => acc + (p.price * (p.cantidad ?? 0)), 0);
   }
   
   

@@ -10,13 +10,13 @@ import { Component, inject } from '@angular/core';
 export class Carrito {
 
   ServicioCarrito = inject(ServicioCarrito)
-  productosAñadidos : any[]
+  productosAniadidos : any[]
   producto : any
   currency: string
   precioTotal: number
 
   constructor(){
-    this.productosAñadidos = []
+    this.productosAniadidos = []
     this.currency = ''
     this.producto = {
       sku: '',
@@ -31,7 +31,7 @@ export class Carrito {
   ngOnInit(){
     this.currency = this.ServicioCarrito.getCurrency()
     this.precioTotal = this.ServicioCarrito.getPrecioTotal()
-    this.productosAñadidos = this.ServicioCarrito.getCarrito()
+    this.productosAniadidos = this.ServicioCarrito.getCarrito()
   }
 
 }
