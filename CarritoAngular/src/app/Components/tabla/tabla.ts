@@ -1,6 +1,6 @@
 import { IProducto } from './../../Interfaces/iproducto.interface';
 import { ServicioCarrito } from './../../Services/servicio-carrito';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tabla',
@@ -10,40 +10,50 @@ import { Component, inject } from '@angular/core';
 })
 export class Tabla {
 
+  @Input() producto!: IProducto
   ServicioCarrito = inject(ServicioCarrito);
-
   arrayProductos: IProducto[];
   currency: string;
-  //ya que no puedo agregar nada a la interfaz, creo un array cantidad
-  //para almacenar la cantidad de los productos
-  cantidad: number[];
+  cantidad : number;
+  
 
   constructor() {
     this.arrayProductos = [];
     this.currency = '';
-    this.cantidad = [];
+    this.cantidad = 0;
   }
 
   ngOnInit(): void {
     this.arrayProductos = this.ServicioCarrito.getAll();
     this.currency = this.ServicioCarrito.getCurrency();
-    //aca lo que hago es un mapeo relacionando con el array de productos
-    this.cantidad = this.arrayProductos.map(() => 0);
+    
   }
 
-  btnSumar(i: number) {
-    this.cantidad[i]++;
+  btnSumar():void { 
+    this.cantidad++;
+    let productoAñadido ={
+      sku: this.producto.sku,
+      title: this.producto.title,
+      price: Number(this.producto.price),
+      cantidad: this.cantidad
+    };
+    this.ServicioCarrito.addProduct(productoAñadido);
   }
 
-  btnRestar(i: number) {
-    if (this.cantidad[i] > 0) {
-      this.cantidad[i]--;
+  btnRestar():void { 
+    if(this.cantidad > 0){
+      this.cantidad--;
     }
+    let productoComprado ={
+      sku: this.producto.sku,
+      title: this.producto.title,
+      price: Number(this.producto.price),
+      cantidad: this.cantidad
+    };
+    this.ServicioCarrito.eliminarProducto(productoComprado);  
   }
 
-  getSubtotal(i: number): number {
-    return this.arrayProductos[i].price * this.cantidad[i];
-  }
+  
 
 
 

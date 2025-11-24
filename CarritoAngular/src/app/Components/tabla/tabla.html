@@ -13,9 +13,9 @@
       <tr>
         <td><h2>{{productos.title}}</h2><p>SKU: {{productos.sku}} </p><br>
         <td>
-          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar(i)">-</button>
-          <input id="cantidad" type="text" class="text-center" [value] = "cantidad[i]">
-          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar(i)">+</button>
+          <button class="btn btn-danger shadow" type="button" id="menos" (click)="btnRestar()">-</button>
+          <input id="cantidad" type="text" class="text-center" [value] = "">
+          <button class="btn btn-success shadow" type="button" id="mas" (click)="btnSumar()">+</button>
         </td>
         <td>€ {{productos.price}}</td>
         <td>t</td>
