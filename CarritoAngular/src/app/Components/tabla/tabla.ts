@@ -24,36 +24,21 @@ export class Tabla {
   ngOnInit(): void {
     this.arrayProductos = this.ServicioCarrito.getAll();
     this.currency = this.ServicioCarrito.getCurrency();
-    // Inicializar cantidades para cada producto (0 por defecto)
     this.arrayProductos.forEach(p => {
       this.cuantity[p.sku] = this.cuantity[p.sku] ?? 0;
     });
   }
 
-  btnSumar(sku: string): void {
+  btnSumar(producto: IProducto): void {
+    const sku = producto.sku;
     this.cuantity[sku] = (this.cuantity[sku] ?? 0) + 1;
-    const producto = this.arrayProductos.find(p => p.sku === sku);
-    if (!producto) return;
-    const productoComprado = {
-      sku: producto.sku,
-      title: producto.title,
-      price: Number(producto.price),
-      cantidad: this.cuantity[sku]
-    };
-    this.ServicioCarrito.addProduct(productoComprado);
+    this.ServicioCarrito.addProduct({ ...producto, cantidad: this.cuantity[sku] });
   }
 
-  btnRestar(sku: string): void { 
+  btnRestar(producto: IProducto): void {
+    const sku = producto.sku;
     this.cuantity[sku] = Math.max((this.cuantity[sku] ?? 0) - 1, 0);
-    const producto = this.arrayProductos.find(p => p.sku === sku);
-    if (!producto) return;
-    const productoComprado = {
-      sku: producto.sku,
-      title: producto.title,
-      price: Number(producto.price),
-      cantidad: this.cuantity[sku]
-    };
-    this.ServicioCarrito.eliminarProducto(productoComprado);
+    this.ServicioCarrito.eliminarProducto({ ...producto, cantidad: this.cuantity[sku] });
   }
 
 }

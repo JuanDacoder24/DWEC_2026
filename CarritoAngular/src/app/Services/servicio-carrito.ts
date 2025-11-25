@@ -24,7 +24,6 @@ export class ServicioCarrito {
     .then(data => {
       this.currency = data.currency;
       data.products.forEach((producto: IProducto) => {
-        // No modificamos la interfaz; el componente mantiene cantidades por sku.
         this.arrayProductos.push(producto);
       });
     });
