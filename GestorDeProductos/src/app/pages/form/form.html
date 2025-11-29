@@ -3,7 +3,8 @@
         <div class="mt-5">
             <h1>Añadir producto a la tienda</h1>
             
-            <form action="" class="card p-4 shadow" (submit)="getDataForm()">
+            <form [formGroup]="modelForm" class="card p-4 shadow" (ngSubmit)="getDataForm()">
+
                 <div class="my-2">
                     <label for="title" class="form-label mt-lg-1">Nombre</label>
                     <input type="text" class="form-control" name="title" id="title" placeholder="Introduce el nombre del producto" formControlName="title">
@@ -24,7 +25,8 @@
                     <input type="text" class="form-control" name="url" id="url" placeholder="Agrega una URL de la imagen" formControlName="url">
                 </div>
 
-                <input type="submit" value="Enviar" class="btn btn-secondary mt-3" [disabled]="!modelForm.valid">
+                <input type="submit" value="Guardar" class="btn btn-secondary mt-3" [disabled]="!modelForm.valid">
+
             </form>
         </div>
     </div>
