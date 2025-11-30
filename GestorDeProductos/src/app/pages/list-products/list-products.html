@@ -10,8 +10,8 @@
                         <p class="card-text text-muted flex-grow-1">{{producto.description}}</p>
                         <p class="card-text fw-bold fs-4 text-dark mb-3">€{{producto.price}}</p>
                         <div class="d-flex gap-2">
-                            <a class="btn btn-success flex-fill">Editar</a>
-                            <a class="btn btn-danger flex-fill"> Eliminar</a>
+                            <a class="btn btn-success flex-fill" (click)="seeDetails(producto)">Editar</a>
+                            <a class="btn btn-danger flex-fill"(click)="deleteProduct(producto)"> Eliminar</a>
                         </div>
                     </div>
                 </div>

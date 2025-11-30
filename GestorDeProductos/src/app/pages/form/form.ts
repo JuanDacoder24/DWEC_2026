@@ -42,7 +42,7 @@ export class Form {
       this.serviceProducts.addProduct(product)
     }
     this.modelForm.reset()
-    this.router.navigate(['home'])
+    this.router.navigate(['listProducts'])
   }
 
 
@@ -53,14 +53,14 @@ export class Form {
         let product = this.serviceProducts.getProductBySku(sku)
         if (product != undefined) {
           this.isNew = false
-          this.modelForm = new FormGroup({
-            id: new FormControl(null, []),
-            sku: new FormControl(null, [Validators.required]),
-            title: new FormControl(null, [Validators.required]),
-            description: new FormControl(null, [Validators.required]),
-            price: new FormControl(null, [Validators.required]),
-            url: new FormControl(null, [Validators.required])
-          }, [])
+            this.modelForm.patchValue({
+              id: product.id ?? null,
+              sku: product.sku ?? null,
+              title: product.title ?? null,
+              description: product.description ?? null,
+              price: product.price ?? null,
+              url: product.url ?? null
+            })
         }
       }
     })
