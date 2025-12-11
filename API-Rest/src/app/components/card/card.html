@@ -1,0 +1,20 @@
+<section>
+    <div class="container-fluid">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 ">
+                <div class="card h-100 shadow-sm hover-card">
+                    <img [src]="miUsuario.image" class="card-img-top" [alt]="miUsuario.first_name" style="height: 450px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{miUsuario.first_name}}</h5>
+                        <!-- <p class="card-text text-muted flex-grow-1">{{producto.description}}</p>
+                        <h5 class="card-text">Categoria: {{producto.category}}</h5>
+                        <p class="card-text fw-bold fs-4 text-dark mb-3">€{{producto.price}}</p> -->
+                        <div class="d-flex gap-2">
+                            <a class="btn btn-success flex-fill" (click)="seeDetails()">Ver detalles</a>
+                            <a class="btn btn-primary flex-fill" (click)="updateUser()">Actualizar</a>
+                            <a class="btn btn-danger flex-fill"(click)="deleteUser()"> Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</section>
