@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { IUsuario } from '../../interfaces/iusuario';
 import { ServicioUsuario } from '../../services/servicio-usuario';
 import Swal from 'sweetalert2';
 import { Card } from "../../components/card/card";
+import { IApi } from '../../interfaces/iapi';
+import { IUsuario } from '../../interfaces/iusuario';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +13,17 @@ import { Card } from "../../components/card/card";
 })
 export class Home {
 
-  arrUser: IUsuario[]
+  user: IUsuario[]
   servicioUsuario = inject(ServicioUsuario)
 
   constructor() {
-    this.arrUser = []
+    this.user = []
   }
 
   async ngOnInit(): Promise<void> {
     try {
-      this.arrUser = await this.servicioUsuario.getAllUsers()
+      const resp = await this.servicioUsuario.getAllUsers()
+      this.user = resp.results
     }
     catch (err) {
       Swal.fire({
@@ -30,6 +32,8 @@ export class Home {
         text: "Error al conectar con la API"
       });
     }
+
+    console.log(this.user)
   }
 
 }

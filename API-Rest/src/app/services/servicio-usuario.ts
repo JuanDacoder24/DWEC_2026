@@ -2,6 +2,7 @@ import { IUsuario } from './../interfaces/iusuario';
 import { HttpClient } from '@angular/common/http';
 import { inject, Inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { IApi } from '../interfaces/iapi';
 
 @Injectable({
   providedIn: 'root',
@@ -14,8 +15,8 @@ export class ServicioUsuario {
   constructor(){}
 
   //Traer todos los usuarios
-  getAllUsers(): Promise<IUsuario[]>{
-    return lastValueFrom (this.httpClient.get<IUsuario[]>(this.baseUrl))
+  getAllUsers(): Promise<IApi>{
+    return lastValueFrom (this.httpClient.get<IApi>(this.baseUrl))
   }
 
   //Traer usuarios por _id
@@ -31,6 +32,11 @@ export class ServicioUsuario {
   //Editar usuario
   updateUser(user: IUsuario): Promise<IUsuario>{
     return lastValueFrom (this.httpClient.put<IUsuario>(`${this.baseUrl}/${user._id}`, user))
+  }
+
+  //Eliminar usuario por id
+  deleteById(_id: string): Promise<IUsuario>{
+    return lastValueFrom (this.httpClient.delete<IUsuario>(`${this.baseUrl}/${_id}`))
   }
   
 }

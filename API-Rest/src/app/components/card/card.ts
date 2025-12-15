@@ -2,6 +2,8 @@ import { IUsuario } from './../../interfaces/iusuario';
 import { Component, inject, Input } from '@angular/core';
 import { ServicioUsuario } from '../../services/servicio-usuario';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { IApi } from '../../interfaces/iapi';
 
 @Component({
   selector: 'app-card',
@@ -14,10 +16,24 @@ export class Card {
   serviceUsuario = inject(ServicioUsuario)
   router = inject(Router)
 
+  @Input() api! : IApi
   @Input() miUsuario!: IUsuario
 
-  deleteUser() {
-
+  async deleteUser(user: IUsuario) {
+    const response = await this.serviceUsuario.deleteById(user._id)
+    if (response._id) {
+      Swal.fire({
+        title: "Se ha eliminado correctamente",
+        icon: "success",
+        draggable: true
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Lo sentimos",
+        text: "No se pudo eliminar al usuario, intentelo otra vez"
+      });
+    }
   }
 
   seeDetails() {
