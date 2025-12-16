@@ -1,20 +1,35 @@
-<section>
-    <div class="container-fluid">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 ">
-                <div class="card h-100 shadow-sm hover-card">
-                    <img [src]="miUsuario.image" class="card-img-top" [alt]="miUsuario.first_name" style="height: 450px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{miUsuario.first_name}}</h5>
-                        <!-- <p class="card-text text-muted flex-grow-1">{{producto.description}}</p>
-                        <h5 class="card-text">Categoria: {{producto.category}}</h5>
-                        <p class="card-text fw-bold fs-4 text-dark mb-3">€{{producto.price}}</p> -->
-                        <div class="d-flex gap-2">
-                            <a class="btn btn-success flex-fill" (click)="seeDetails()">Ver detalles</a>
-                            <a class="btn btn-primary flex-fill" (click)="updateUser()">Actualizar</a>
-                            <a class="btn btn-danger flex-fill"(click)="deleteUser(miUsuario)"> Eliminar</a>
-                        </div>
+<div class="container">
+    <div class="row g-0">
+        <div class="col-12">
+            <div class="text-center">
+                <div class="card shadow-sm p-2">
+                    <div class="d-flex justify-content-center mb-1">
+                        <img [src]="miUsuario.image" class="rounded-circle"style="width: 100px;">
+                    </div>
+                    <h6 class="card-title mb-2">
+                        {{miUsuario.first_name}} {{miUsuario.last_name}}
+                    </h6>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button class="btn btn-outline-success btn-sm d-flex flex-column align-items-center border-0"
+                                (click)="seeDetails()">
+                            <i class="bi bi-eye fs-5"></i>
+                            <small style="font-size: 0.7rem;">Ver detalles</small>
+                        </button>
+
+                        <button class="btn btn-outline-primary btn-sm d-flex flex-column align-items-center border-0"
+                                (click)="updateUser()">
+                            <i class="bi bi-arrow-repeat fs-5"></i>
+                            <small style="font-size: 0.7rem;">Actualizar</small>
+                        </button>
+
+                        <button class="btn btn-outline-danger btn-sm d-flex flex-column align-items-center border-0"
+                                (click)="deleteUser(miUsuario)">
+                            <i class="bi bi-trash fs-5"></i>
+                            <small style="font-size: 0.7rem;">Eliminar</small>
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
-</section>
+</div>
