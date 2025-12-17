@@ -1,11 +1,11 @@
-import { Component, inject, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServicioUsuario } from '../../services/servicio-usuario';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-form',
-  imports: [],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './form.html',
   styleUrl: './form.css',
 })
@@ -28,6 +28,10 @@ export class Form {
       image: new FormControl(null,[Validators.required]),
       password: new FormControl(null,[Validators.required]),
     })
+  }
+
+  getDataForm(){
+
   }
 
   checkControl(FormControlName: string, validator: string): boolean | undefined{
