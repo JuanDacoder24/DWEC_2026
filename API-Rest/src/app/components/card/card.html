@@ -10,22 +10,14 @@
                         {{miUsuario.first_name}} {{miUsuario.last_name}}
                     </h6>
                     <div class="d-flex justify-content-center gap-2">
-                        <button class="btn btn-outline-success btn-sm d-flex flex-column align-items-center border-0"
-                                (click)="seeDetails()">
-                            <i class="bi bi-eye fs-5"></i>
-                            <small style="font-size: 0.7rem;">Ver detalles</small>
+                        <button class="btn btn-outline-success btn-sm d-flex flex-column align-items-center border-0"(click)="seeDetails(miUsuario)">
+                            <i class="bi bi-eye fs-5"></i><small style="font-size: 0.7rem;">Ver detalles</small>
                         </button>
-
-                        <button class="btn btn-outline-primary btn-sm d-flex flex-column align-items-center border-0"
-                                (click)="updateUser()">
-                            <i class="bi bi-arrow-repeat fs-5"></i>
-                            <small style="font-size: 0.7rem;">Actualizar</small>
+                        <button class="btn btn-outline-primary btn-sm d-flex flex-column align-items-center border-0"(click)="updateUser()">
+                            <i class="bi bi-arrow-repeat fs-5"></i><small style="font-size: 0.7rem;">Actualizar</small>
                         </button>
-
-                        <button class="btn btn-outline-danger btn-sm d-flex flex-column align-items-center border-0"
-                                (click)="deleteUser(miUsuario)">
-                            <i class="bi bi-trash fs-5"></i>
-                            <small style="font-size: 0.7rem;">Eliminar</small>
+                        <button class="btn btn-outline-danger btn-sm d-flex flex-column align-items-center border-0"(click)="deleteUser(miUsuario)">
+                            <i class="bi bi-trash fs-5"></i><small style="font-size: 0.7rem;">Eliminar</small>
                         </button>
                     </div>
                 </div>

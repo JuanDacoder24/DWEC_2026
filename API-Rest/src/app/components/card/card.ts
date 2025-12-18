@@ -36,8 +36,8 @@ export class Card {
     }
   }
 
-  seeDetails() {
-
+  seeDetails(user: IUsuario) {
+    this.router.navigate(['/seeDetails', user._id])
   }
 
   updateUser() {
