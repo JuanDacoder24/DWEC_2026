@@ -3,7 +3,6 @@ import { Component, inject, Input } from '@angular/core';
 import { ServicioUsuario } from '../../services/servicio-usuario';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { IApi } from '../../interfaces/iapi';
 
 @Component({
   selector: 'app-card',
@@ -16,7 +15,6 @@ export class Card {
   serviceUsuario = inject(ServicioUsuario)
   router = inject(Router)
 
-  @Input() api! : IApi
   @Input() miUsuario!: IUsuario
 
   async deleteUser(user: IUsuario) {
@@ -40,8 +38,8 @@ export class Card {
     this.router.navigate(['/seeDetails', user._id])
   }
 
-  updateUser() {
-
+  updateUser(user: IUsuario) {
+    this.router.navigate(['/form', user._id])
   }
 
 }

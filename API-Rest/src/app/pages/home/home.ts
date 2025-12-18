@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ServicioUsuario } from '../../services/servicio-usuario';
 import Swal from 'sweetalert2';
 import { Card } from "../../components/card/card";
-import { IApi } from '../../interfaces/iapi';
+
 import { IUsuario } from '../../interfaces/iusuario';
 
 @Component({
