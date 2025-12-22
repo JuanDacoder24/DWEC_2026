@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, } from '@angular/core';
 import { ServicioUsuario } from '../../services/servicio-usuario';
 import Swal from 'sweetalert2';
 import { Card } from "../../components/card/card";
@@ -21,9 +21,16 @@ export class Home {
   }
 
   async ngOnInit(): Promise<void> {
+    console.log('ngOnInit ejecutándose en Home'); 
+    await this.cargarUsuarios();
+  }
+
+  async cargarUsuarios(): Promise<void> {
+    console.log('Cargando usuarios desde la API...'); 
     try {
       const resp = await this.servicioUsuario.getAllUsers()
-      this.user = resp.results
+      this.user = resp.results.map((u: IUsuario) => ({...u}))
+      console.log('Usuarios cargados:', this.user)
     }
     catch (err) {
       Swal.fire({
@@ -32,8 +39,11 @@ export class Home {
         text: "Error al conectar con la API"
       });
     }
+  }
 
-    console.log(this.user)
+  //funcion para eliminar usuario, usado en el componente hijo
+  eliminarUsuario(userId: string) {
+    this.user = this.user.filter(u => u._id !== userId);
   }
 
 }

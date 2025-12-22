@@ -1,6 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { ServicioUsuario } from '../../services/servicio-usuario';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IUsuario } from '../../interfaces/iusuario';
 import Swal from 'sweetalert2';
 import { ActivatedRoute } from '@angular/router';
@@ -14,15 +14,16 @@ import { ActivatedRoute } from '@angular/router';
 export class SeeDetails {
 
   serviceUsuario = inject(ServicioUsuario)
-  router = inject(ActivatedRoute)
+  activatedRouter = inject(ActivatedRoute)
+  router = inject(Router)
 
   miUsuario!: IUsuario
 
-  constructor() {}
+  constructor() { }
 
   async ngOnInit(): Promise<void> {
     try {
-      const id = this.router.snapshot.params['_id']
+      const id = this.activatedRouter.snapshot.params['_id']
       this.miUsuario = await this.serviceUsuario.getUserById(id)
       console.log(id)
     }
@@ -36,24 +37,46 @@ export class SeeDetails {
   }
 
   async deleteUser(user: IUsuario) {
-    const response = await this.serviceUsuario.deleteById(user._id)
-    if (response._id) {
-      Swal.fire({
-        title: "Se ha eliminado correctamente",
-        icon: "success",
-        draggable: true
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Lo sentimos",
-        text: "No se pudo eliminar al usuario, intentelo otra vez"
-      });
+      const response = await this.serviceUsuario.deleteById(user._id)
+      if (response._id) {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+          },
+          buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+          title: "Estas seguro?",
+          text: "No podras revertir esto!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Si, eliminar!",
+          cancelButtonText: "No, cancelar!",
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+              title: "Eliminado!",
+              text: "El usuario ha sido eliminado con exito",
+              icon: "success"
+            });
+            this.router.navigate(['/home'])
+          } else if (
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire({
+              title: "Cancelado",
+              icon: "error"
+            });
+          }
+        });
+      }
     }
-  }
 
   updateUser() {
-    
+
   }
 
+  
 }

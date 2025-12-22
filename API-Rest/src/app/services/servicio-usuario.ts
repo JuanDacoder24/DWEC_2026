@@ -38,5 +38,5 @@ export class ServicioUsuario {
   deleteById(_id: string): Promise<IUsuario>{
     return lastValueFrom (this.httpClient.delete<IUsuario>(`${this.baseUrl}/${_id}`))
   }
-  
+
 }

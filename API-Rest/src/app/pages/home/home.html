@@ -1,7 +1,7 @@
 <div class="row g-0">
     @for (user of user; track user) {
     <article class="col-4 col-md-3 col-sm-4 p-3">
-        <app-card [miUsuario]="user"></app-card>
+        <app-card [miUsuario]="user" (usuarioEliminado)="eliminarUsuario($event)"></app-card>
     </article>
     }
 </div>
