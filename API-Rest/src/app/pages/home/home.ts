@@ -16,16 +16,21 @@ export class Home {
   user: IUsuario[]
   servicioUsuario = inject(ServicioUsuario)
 
+  pageActual: number = 1;
+  totalPages: number = 1;
+  totalUsers: number = 0;
+  usersPerPage: number = 0;
+  loading: boolean = false;
+
   constructor() {
     this.user = []
   }
 
   async ngOnInit(): Promise<void> {
-    console.log('ngOnInit ejecutándose en Home'); 
-    await this.cargarUsuarios();
+    await this.cargarUsuarios(this.pageActual);
   }
 
-  async cargarUsuarios(): Promise<void> {
+  async cargarUsuarios(page: number): Promise<void> {
     console.log('Cargando usuarios desde la API...'); 
     try {
       const resp = await this.servicioUsuario.getAllUsers()
@@ -45,5 +50,7 @@ export class Home {
   eliminarUsuario(userId: string) {
     this.user = this.user.filter(u => u._id !== userId);
   }
+
+  
 
 }

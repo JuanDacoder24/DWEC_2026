@@ -19,6 +19,12 @@ export class Form {
   activedRoute = inject(ActivatedRoute)
   router = inject(Router)
 
+  pageActual: number = 1;
+  totalPages: number = 1;
+  totalUsers: number = 0;
+  usersPerPage: number = 0;
+  loading: boolean = false;
+
   isNew: boolean
   userId: string | null = null 
 
