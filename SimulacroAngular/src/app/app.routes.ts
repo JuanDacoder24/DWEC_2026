@@ -5,12 +5,15 @@ import { ProductList } from './pages/product-list/product-list';
 import { UserList } from './pages/user-list/user-list';
 import { Login } from './pages/login/login';
 import { Dashboard } from './pages/dashboard/dashboard';
+import { SeeDetails } from './components/see-details/see-details';
 
 export const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: 'home', component: Home},
     {path: 'login', component: Login},
     {path: 'form', component: Form},
+    {path: 'form/:_id', component: Form},
+    {path: 'seeDetails/:_id', component: SeeDetails},
     {
         path: 'dashboard', component: Dashboard, children:
         [

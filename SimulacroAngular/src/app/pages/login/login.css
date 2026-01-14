@@ -1,0 +1,44 @@
+.form-control:focus {
+    background-color: #343a40;
+    border-color: #6366f1;
+    color: white;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: #6366f1;
+    border-color: #6366f1;
+}
+
+.btn-primary:hover {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+    transform: scale(1.02);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-outline-secondary {
+    border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+    background-color: rgba(108, 117, 125, 0.2);
+    border-color: #6c757d;
+    color: white;
+    transform: scale(1.02);
+}
+
+.btn-outline-secondary:active {
+    transform: scale(0.98);
+}
+
+.bg-secondary.bg-opacity-25 {
+    background-color: rgba(108, 117, 125, 0.15) !important;
+}
