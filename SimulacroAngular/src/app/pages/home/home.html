@@ -1,32 +1,105 @@
-<!-- Carrusel Tailwind Puro - Sin TypeScript -->
-<div class="relative w-full overflow-hidden">
-  <!-- Carousel Wrapper -->
-  <div class="relative h-125 md:h-150">
-    
-    <!-- Slide 1 -->
-    <div id="slide-1" class="absolute inset-0 transition-opacity duration-700 opacity-100">
-      <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=900&fit=crop" 
-           alt="Slide 1" 
-           class="absolute inset-0 w-full h-full object-cover">
-      <div class="absolute inset-0 bg-linear-to-r from-gray-900/80 to-gray-900/40"></div>
-      <div class="relative h-full flex items-center">
-        <div class="container mx-auto px-6 lg:px-8">
-          <div class="max-w-2xl text-white">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Nueva Colección Primavera
-            </h2>
-            <p class="text-lg md:text-xl text-gray-200 mb-8">
-              Descubre las últimas tendencias en moda con nuestra exclusiva colección
-            </p>
-            <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300" [routerLink]="['/login']">
-              Log in
-            </button>
-            
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pramirk - Tu Tienda de Moda</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+
+  <!-- Hero Section - Pantalla Completa -->
+  <section id="inicio" class="relative w-full h-screen overflow-hidden">
+
+    <!-- Imagen de Fondo -->
+    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop&q=80"
+      alt="Hero Background" class="absolute inset-0 w-full h-full object-cover">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-transparent"></div>
+
+    <!-- Contenido -->
+    <div class="relative h-full flex items-center">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+
+          <!-- Badge -->
+          <div class="inline-block mb-6 animate-fade-in">
+            <span
+              class="bg-indigo-600/80 backdrop-blur-sm text-white px-5 py-2 rounded-full text-sm font-medium shadow-lg">
+              ✨ Nueva Colección Primavera 2026
+            </span>
           </div>
+
+          <!-- Título -->
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            Descubre el Estilo que te define
+            <span class="text-indigo-400 block mt-2"> en Pramirk</span>
+          </h1>
+
+          <!-- Descripción -->
+          <p class="text-xl md:text-2xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
+            Las mejores prendas de temporada para toda la familia.
+            Calidad excepcional y diseños únicos que marcan tendencia.
+          </p>
+
+          <!-- Botones -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-12">
+            <a [routerLink]="['/login']"
+              class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <span>Log in</span>
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Features -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div class="flex items-center text-white bg-white/5 backdrop-blur-sm rounded-lg p-4">
+              <svg class="w-8 h-8 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <div>
+                <p class="font-semibold">Envío Gratis</p>
+                <p class="text-sm text-gray-300">En pedidos +50€</p>
+              </div>
+            </div>
+
+            <div class="flex items-center text-white bg-white/5 backdrop-blur-sm rounded-lg p-4">
+              <svg class="w-8 h-8 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              <div>
+                <p class="font-semibold">Devolución</p>
+                <p class="text-sm text-gray-300">30 días garantía</p>
+              </div>
+            </div>
+
+            <div class="flex items-center text-white bg-white/5 backdrop-blur-sm rounded-lg p-4">
+              <svg class="w-8 h-8 text-indigo-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+              <div>
+                <p class="font-semibold">Pago Seguro</p>
+                <p class="text-sm text-gray-300">100% protegido</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
-    </div>
 
-    
+  </section>
+
+
+</body>
+
+</html>
