@@ -35,7 +35,7 @@ export class ProductServices {
   }
 
   //Eliminar producto
-  deleteProduc(_id: string): Promise<IProduct>{
+  deleteByid(_id: string): Promise<IProduct>{
     return lastValueFrom(this.httpClient.delete<IProduct>(`${this.baseUrl}/${_id}`))
   }
 
