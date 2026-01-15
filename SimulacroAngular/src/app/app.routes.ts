@@ -11,7 +11,7 @@ export const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: 'home', component: Home},
     {path: 'login', component: Login},
-    {path: 'form', component: Form},
+
     {path: 'form/:_id', component: Form},
     {path: 'seeDetails/:_id', component: SeeDetails},
     {
@@ -20,6 +20,7 @@ export const routes: Routes = [
             {path: '', pathMatch: 'full', redirectTo: 'productList'},
             {path: 'productList', component: ProductList},
             {path: 'userList', component: UserList},
+            {path: 'form', component: Form},
         ]
     },
     {path: '**', redirectTo: 'home'},

@@ -1,8 +1,64 @@
-<div class="container mx-auto">
-    <button type="button" class="py-3 mt-8 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-700 
-    bg-gray-900 text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500 
-    active:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none transition-colors duration-200" [routerLink]="['/home']">
-    Volver
-</button>
+<section>
+    <div class="container">
+        <div class="mt-5">
+            <h1>Añadir producto a la tienda</h1>
 
-</div>
+            <form [formGroup]="modelForm" class="card p-3 shadow" (ngSubmit)="getDataForm()">
+                <div class="my-2">
+                    <label for="name" class="form-label mt-lg-3">Nombre</label>
+                    <input type="text" class="form-control" name="name" id="name"
+                        placeholder="Introduce el nombre del producto" formControlName="name">
+                    @if(checkControl('name', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('name', 'minlength')){
+                    <p class="error">Longitud minima 3 caracteres</p>
+                    }
+                </div>
+                <div class="my-2">
+                    <label for="description" class="form-label mt-lg-3">Descripcion</label>
+                    <input type="text" class="form-control" name="description" id="description"
+                        placeholder="Introduce la descripcion del producto" formControlName="description">
+                    @if(checkControl('description', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('description', 'maxlength')){
+                    <p class="error">Longitud maxima 280 caracteres</p>
+                    }
+                </div>
+                <div class="my-2">
+                    <label for="price" class="form-label mt-lg-3">Precio</label>
+                    <input type="number" class="form-control" name="price" id="price"
+                        placeholder="Introduce el precio del producto" formControlName="price">
+                    @if(checkControl('price', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('price', 'min') || checkControl('price','max')){
+                    <p class="error">El precio tiene estar entre 0 y 1000</p>
+                    }
+                </div>
+                <div class="my-2">
+                    <label for="category" class="form-label mt-lg-3">Selecciona la categoria del producto</label>
+                    <select name="category" id="category" placeholder="Seleccionar" class="form-control" formControlName="category">
+                        <option value="mujer">Mujer</option>
+                        <option value="hombre">Hombre</option>
+                        <option value="niño">Niño</option>
+                    </select>
+                    @if(checkControl('category', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                </div>
+                <div class="my-2">
+                    <label for="image" class="form-label mt-lg-3">Imagen</label>
+                    <input type="text" class="form-control" name="image" id="image"
+                        placeholder="Introduce la URL de la imagen" formControlName="image">
+                    @if(checkControl('image', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                </div>
+                <input type="submit" value="Guardar" class="btn btn-secondary mt-5" [disabled]="!modelForm.valid">
+            </form>
+
+        </div>
+    </div>
+</section>

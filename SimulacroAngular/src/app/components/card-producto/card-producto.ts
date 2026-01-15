@@ -1,8 +1,9 @@
+import { ProductServices } from './../../services/product-services';
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { ProductServices } from '../../services/product-services';
-import { Router } from '@angular/router';
 import { IProduct } from '../../interfaces/iproduct';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-card-producto',
@@ -12,17 +13,17 @@ import Swal from 'sweetalert2';
 })
 export class CardProducto {
 
-  productService = inject(ProductServices)
-  router = inject(Router)
-
+  private productServices = inject(ProductServices)
+  private router = inject(Router)
 
   @Input() product!: IProduct
-  
-  @Output() productoEliminado = new EventEmitter<string>()
 
+  @Output() productoEliminado = new EventEmitter<string>();
+
+  constructor(){}
 
   async deleteProduct(product: IProduct){
-    const response = await this.productService.deleteByid(product._id)
+    const response = await this.productServices.deleteByid(product._id)
     if (response._id) {
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -58,6 +59,10 @@ export class CardProducto {
           }
         });
       }
+  }
+
+  seeDetails(product: IProduct){
+    this.router.navigate(['/product-list', product._id])
   }
   
 }

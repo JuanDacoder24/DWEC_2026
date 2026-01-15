@@ -1,1 +1,11 @@
-<p>product-list works!</p>
+<div class="row g-0">
+    <div class="container mt-4">
+        <h1>Top prendas 2025</h1>
+    </div>
+    @for( product of arrayProductos; track product){
+        <article class="col-4 col-md-3 col-sm-4 p-3">
+            <app-card-producto [product]="product" (productoEliminado)="eliminarProducto($event)"></app-card-producto>
+
+        </article>
+    }
+</div>
