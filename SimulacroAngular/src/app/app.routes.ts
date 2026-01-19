@@ -6,21 +6,21 @@ import { UserList } from './pages/user-list/user-list';
 import { Login } from './pages/login/login';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { SeeDetails } from './components/see-details/see-details';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
     {path: '', pathMatch: 'full', redirectTo: 'home'},
     {path: 'home', component: Home},
     {path: 'login', component: Login},
-
-    {path: 'form/:_id', component: Form},
     {path: 'seeDetails/:_id', component: SeeDetails},
     {
-        path: 'dashboard', component: Dashboard, children:
+        path: 'dashboard', component: Dashboard, canActivate:[authGuard], children:
         [
             {path: '', pathMatch: 'full', redirectTo: 'productList'},
             {path: 'productList', component: ProductList},
             {path: 'userList', component: UserList},
-            {path: 'form', component: Form},
+            {path: 'form', component: Form},              
+            {path: 'form/:_id', component: Form},       
         ]
     },
     {path: '**', redirectTo: 'home'},

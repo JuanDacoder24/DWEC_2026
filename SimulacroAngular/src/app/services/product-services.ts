@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/iproduct';
-import { Main } from '../interfaces/main';
 import { lastValueFrom } from 'rxjs';
 
 @Injectable({
@@ -16,8 +15,13 @@ export class ProductServices {
 
   //Traer todos los productos 
   async getAllProducts(page: number = 1): Promise<any> {
-    const res = await fetch(`${this.baseUrl}?page=${page}`)
-    return await res.json()
+    console.log(`Obteniendo productos - Página ${page}`);
+    const res = await lastValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}?page=${page}`)
+    );
+
+    console.log('Respuesta:', res);
+    return res;
   }
 
   //Traer productos por id
@@ -36,13 +40,29 @@ export class ProductServices {
   }
 
   //Eliminar producto
-  deleteByid(_id: string): Promise<IProduct> {
-    return lastValueFrom(this.httpClient.delete<IProduct>(`${this.baseUrl}/${_id}`))
+  async deleteByid(_id: string): Promise<IProduct> {
+    console.log('Eliminando producto con ID:', _id);
+    return lastValueFrom(
+      this.httpClient.delete<IProduct>(`${this.baseUrl}/${_id}`)
+    );
   }
 
   //insertar serie 
-  insertProduct(product: IProduct): Promise<IProduct> {
-    return lastValueFrom(this.httpClient.post<IProduct>(this.baseUrl, product))
+  async insertProduct(product: IProduct): Promise<IProduct> {
+    console.log('Enviando a:', this.baseUrl);
+    console.log('Producto a insertar:', product);
+
+    const result = await lastValueFrom(
+      this.httpClient.post<IProduct>(this.baseUrl, product)
+    );
+
+    console.log('Respuesta del servidor:', result);
+
+    // Verifica que se insertó
+    const todosLosProductos = await this.getAllProducts(1);
+    console.log('Total de productos después de insertar:', todosLosProductos.total);
+
+    return result;
   }
 
 

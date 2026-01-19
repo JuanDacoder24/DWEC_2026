@@ -48,3 +48,37 @@
     text-align: center;
   }
 }
+
+/* Mejorar apariencia del panel de filtros */
+.card-header {
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+}
+
+/* Animación suave al filtrar */
+.row {
+  transition: all 0.3s ease;
+}
+
+/* Mensaje de no resultados */
+.alert i {
+  color: #ffc107;
+}
+
+/* Mejorar botones */
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}

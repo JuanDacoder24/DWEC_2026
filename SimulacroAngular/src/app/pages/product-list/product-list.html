@@ -2,6 +2,90 @@
   <div class="container mt-4">
     <h1>Top prendas 2025</h1>
   </div>
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">
+        <i class="bi bi-funnel"></i> Filtros de búsqueda
+      </h5>
+    </div>
+    <div class="card-body">
+      <div class="row g-3">
+        
+        <!-- Búsqueda por texto -->
+        <div class="col-md-4">
+          <label for="textoBusqueda" class="form-label">
+            <i class="bi bi-search"></i> Buscar
+          </label>
+          <input 
+            type="text" 
+            class="form-control" 
+            id="textoBusqueda"
+            placeholder="Buscar por nombre o descripción..."
+            [(ngModel)]="filtros.textoBusqueda"
+            (ngModelChange)="onFiltroChange()">
+        </div>
+
+        <!-- Filtro por categoría -->
+        <div class="col-md-4">
+          <label for="categoria" class="form-label">
+            <i class="bi bi-tag"></i> Categoría
+          </label>
+          <select 
+            class="form-select" 
+            id="categoria"
+            [(ngModel)]="filtros.categoria"
+            (ngModelChange)="onFiltroChange()">
+            <option value="">Todas las categorías</option>
+            <option *ngFor="let cat of categorias" [value]="cat">
+              {{ cat | titlecase }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Rango de precio -->
+        <div class="col-md-4">
+          <label class="form-label">
+            <i class="bi bi-currency-euro"></i> Rango de precio
+          </label>
+          <div class="input-group">
+            <input 
+              type="number" 
+              class="form-control" 
+              placeholder="Min"
+              [(ngModel)]="filtros.precioMin"
+              (ngModelChange)="onFiltroChange()"
+              min="0">
+            <span class="input-group-text">-</span>
+            <input 
+              type="number" 
+              class="form-control" 
+              placeholder="Max"
+              [(ngModel)]="filtros.precioMax"
+              (ngModelChange)="onFiltroChange()"
+              max="1000">
+          </div>
+          <small class="text-muted">
+            €{{ filtros.precioMin }} - €{{ filtros.precioMax }}
+          </small>
+        </div>
+
+      </div>
+
+      <!-- Botón limpiar filtros -->
+      <div class="row mt-3">
+        <div class="col-12">
+          <button 
+            class="btn btn-outline-secondary" 
+            (click)="limpiarFiltros()">
+            <i class="bi bi-x-circle"></i> Limpiar filtros
+          </button>
+          <span class="ms-3 text-muted">
+            Mostrando {{ productosFiltrados.length }} de {{ arrayProductos.length }} productos
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
   @for( product of arrayProductos; track product){
   <article class="col-4 col-md-3 col-sm-4 p-3">
     <app-card-producto [product]="product" (productoEliminado)="eliminarProducto($event)"></app-card-producto>

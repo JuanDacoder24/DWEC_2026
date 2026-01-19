@@ -10,8 +10,12 @@
                     <h5 class="card-text">Categoria: {{product.category}}</h5>
                     <p class="card-text fw-bold fs-4 text-dark mb-3">€{{product.price}}</p>
                     <div class="d-flex gap-2">
-                        <a class="btn btn-success flex-fill" (click)="seeDetails(product)">Editar</a>
-                        <a class="btn btn-danger flex-fill" (click)="deleteProduct(product)"> Eliminar</a>
+                        <button class="btn btn-success flex-fill" (click)="editarProducto(product)">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger flex-fill" (click)="deleteProduct(product)">
+                            Eliminar
+                        </button>
                     </div>
                 </div>
             </div>
