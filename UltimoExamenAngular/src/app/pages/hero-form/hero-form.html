@@ -1,0 +1,90 @@
+<section>
+    <button type="button" class="btn btn-secondary text-ligth mt-3" [routerLink]="['/langinPage']">
+        Volver
+    </button>
+    <div class="container">
+        <div class="mt-5 mb-5">
+            <h1>Añadir heroe al catalogo</h1>
+
+            <form [formGroup]="modelForm" class="card p-3 shadow" (ngSubmit)="getDataForm()">
+                <div class="my-2">
+                    <label for="heroname" class="form-label mt-lg-3">Heroname</label>
+                    <input type="text" class="form-control" name="heroname" id="heroname"
+                        placeholder="Introduce el heroname del heroe" formControlName="heroname">
+                    @if(checkControl('heroname', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('heroname', 'minlength')){
+                    <p class="error">Longitud minima 3 caracteres</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="fullname" class="form-label mt-lg-3">Fullname</label>
+                    <input type="text" class="form-control" name="fullname" id="fullname"
+                        placeholder="Introduce el fullname del heroe" formControlName="fullname">
+                    @if(checkControl('fullname', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('fullname', 'minlength')){
+                    <p class="error">Longitud minima 3 caracteres</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="image1" class="form-label mt-lg-3">Imagen 1</label>
+                    <input type="text" class="form-control" name="image1" id="image1"
+                        placeholder="Introduce la URL de la primera imagen" formControlName="image1">
+                    @if(checkControl('image1', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="image2" class="form-label mt-lg-3">Imagen 2</label>
+                    <input type="text" class="form-control" name="image2" id="image2"
+                        placeholder="Introduce la URL de la segunda imagen" formControlName="image2">
+                    @if(checkControl('image2', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="image3" class="form-label mt-lg-3">Imagen 3</label>
+                    <input type="text" class="form-control" name="image3" id="image3"
+                        placeholder="Introduce la URL de la tercera imagen" formControlName="image3">
+                    @if(checkControl('image3', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="gender" class="form-label mt-lg-3">Genero</label>
+                    <input type="text" class="form-control" name="gender" id="gender"
+                        placeholder="Introduce el genero del heroe" formControlName="gender">
+                    @if(checkControl('gender', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('gender', 'maxlength')){
+                    <p class="error">Longitud maxima 280 caracteres</p>
+                    }
+                </div>
+
+                <div class="my-2">
+                    <label for="alignment" class="form-label mt-lg-3">Alineacion</label>
+                    <input type="text" class="form-control" name="alignment" id="alignment"
+                        placeholder="Introduce la alineacion del heroe" formControlName="alignment">
+                    @if(checkControl('alignment', 'required')){
+                    <p class="error">Campo requerido</p>
+                    }
+                    @if(checkControl('alignment', 'minlength')){
+                    <p class="error">Longitud minima 3 caracteres</p>
+                    }
+                </div>
+                
+                <input type="submit" value="Guardar" class="btn btn-secondary mt-5" [disabled]="!modelForm.valid">
+            </form>
+
+        </div>
+    </div>
+</section>

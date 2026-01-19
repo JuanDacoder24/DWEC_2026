@@ -1,0 +1,24 @@
+<section class="container my-5">
+    <div class="row g-4">
+        <div class="col-12 ">
+            <div class="card h-100 shadow-sm hover-card">
+                <img [src]="hero.image1" class="card-img-top" [alt]="hero.image1"
+                    style="height: 450px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{hero.heroname}} {{hero.fullname}}</h5>
+                    <p class="card-text text-muted grow">{{hero.gender}}</p>
+                    <h5 class="card-text">Categoria: {{hero.race}}</h5>
+                    <p class="card-text text-muted grow">Alineacion: {{hero.alignment}}</p>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-success flex-fill" (click)="editarHeroe(hero)">
+                            Editar
+                        </button>
+                        <button class="btn btn-danger flex-fill" (click)="deleteHero(hero)">
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
