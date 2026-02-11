@@ -4,7 +4,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const cloneRequest = req.clone({
         setHeaders: {
             'Content-type': 'aplication/json',
-            'Authorization': localStorage.getItem("accessToken") || ""
+            'Authorization': localStorage.getItem("token") || ""
         }
     });
 
