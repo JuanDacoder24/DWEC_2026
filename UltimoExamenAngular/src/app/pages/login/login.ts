@@ -12,39 +12,34 @@ import Swal from 'sweetalert2';
   styleUrl: './login.css',
 })
 export class Login {
-
-
-  private userServices = inject(UserServices)
-  private router = inject(Router)
-
-  constructor(){ }
+private userServices = inject(UserServices);
+  private router = inject(Router);
 
   ngOnInit(): void {
-    if(localStorage.getItem('accessToken')){
-      this.router.navigate(['/dashboard'])
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['/login']);
     }
   }
 
   async getUser(loginForm: NgForm) {
-    const loginUser: User = loginForm.value as User
-    loginUser.expiresInMins = 10
-    try{
-      let res = await this.userServices.login(loginUser)
-      console.log(res)
-      if(res.accessToken){
-        localStorage.setItem("accessToken", res.accessToken)
-        localStorage.setItem("refreshToken", res.refreshToken)
-        this.router.navigate(['/dashboard'])
-        loginForm.reset()
+    const loginUser: User = loginForm.value as User;
+
+    //Hay que hacer la petición de login
+    try {
+      let response = await this.userServices.login(loginUser);
+      console.log(response); 
+      if (response.token) {
+        localStorage.setItem("token", response.token);
+
+        this.router.navigate(['/heroes']);
+        loginForm.reset();
       }
-    } 
-    catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Error de credenciales",
-      });
+
+    } catch (error) {
+      alert("Credenciales incorrectos");
       loginForm.reset();
     }
+
   }
+
 }
