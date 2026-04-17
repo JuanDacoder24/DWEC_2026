@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="assets/loading.gif" width="100"/>
-  <br>
+<img src="https://i.imgur.com/tuGif.gif"/>  <br>
   <b>Cargando aplicación...</b>
 </p>
