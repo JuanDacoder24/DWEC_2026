@@ -1,5 +1,5 @@
 <h3 align="center">Cargando sistema...</h3>
 
 <p align="center">
-  <img src="https://imgur.com/gallery/cool-respring-animation-gif-JKjtLPG#/t/loading.gif" width="80"/>
+  <img src="https://i.imgur.com/3mlJsm2.mp4" width="80"/>
 </p>
