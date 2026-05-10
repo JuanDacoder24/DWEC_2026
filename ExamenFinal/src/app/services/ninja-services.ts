@@ -2,31 +2,42 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { INinja } from '../interfaces/ininja';
 import { lastValueFrom } from 'rxjs';
+import { INinjaResponse } from '../interfaces/ininja-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NinjaServices {
 
-  private baseUrl: string = 'http://localhost:8080/api'
-  private httpClient = inject(HttpClient)
+  private baseURL: string = 'http://localhost:8080/api/ninjas';
+  http = inject(HttpClient);
 
-  constructor(){}
+  constructor() { }
 
-  getAllNinjas(): Promise<INinja>{
-    return lastValueFrom(this.httpClient.get<INinja>(this.baseUrl))
+  async getAllNinjas(page: number = 0): Promise<INinjaResponse> {
+    const resp = await lastValueFrom(
+      this.http.get<INinjaResponse>(this.baseURL + '?page=' + page)
+    );
+    return resp;
   }
 
-  getNinjaById(id: string): Promise<INinja>{
-    return lastValueFrom(this.httpClient.get<INinja>(this.baseUrl + '/' + id))
+
+  getById(id: number): Promise<INinja> {
+    return lastValueFrom(this.http.get<INinja>(`${this.baseURL}/${id}`));
   }
 
-  addNinja(ninja: INinja): Promise<INinja>{
-    return lastValueFrom(this.httpClient.post<INinja>(this.baseUrl, ninja))
+
+  create(ninja: INinja): Promise<INinja> {
+    return lastValueFrom(this.http.post<INinja>(this.baseURL, ninja));
   }
 
-  updateNinja(ninja: INinja): Promise<INinja>{
-    return lastValueFrom(this.httpClient.put<INinja>(`${this.baseUrl}/${ninja.id}`, ninja))
+
+  update(ninja: INinja): Promise<INinja> {
+    return lastValueFrom(this.http.put<INinja>(this.baseURL, ninja));
   }
-  
+
+
+  delete(id: number): Promise<void> {
+    return lastValueFrom(this.http.delete<void>(`${this.baseURL}/${id}`));
+  }
 }

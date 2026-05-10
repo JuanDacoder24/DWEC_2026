@@ -8,10 +8,12 @@ import { IUser } from '../interfaces/iuser';
 })
 export class UserServices {
 
-  private httpClient = inject(HttpClient)
-  private baseUrl: string = 'http://localhost:8080/api/'
+  private httpClient = inject(HttpClient);
+  private baseUrl: string = 'http://localhost:8080/api/login';
+
+  constructor() { }
 
   login(user: IUser): Promise<any> {
-    return lastValueFrom(this.httpClient.post<any>(this.baseUrl + 'login', user))
+    return lastValueFrom(this.httpClient.post<any>(this.baseUrl, user));
   }
 }

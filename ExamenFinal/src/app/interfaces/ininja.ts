@@ -1,3 +1,5 @@
+import { INinjaStats } from "./ininja-stats"
+
 export interface INinja {
     id: number
     ninjaName: string
@@ -9,4 +11,5 @@ export interface INinja {
     level: string
     naturetype: string
     affiliation: string
+    stats: INinjaStats
 }

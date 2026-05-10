@@ -14,8 +14,8 @@ export const routes: Routes = [
     {
         path:'dashboard', component: Dashboard, canActivate: [authGuard], children:
         [
-            {path:'', pathMatch: 'full', redirectTo: 'List'},
-            {path:'List', component: List},
+            {path:'', pathMatch: 'full', redirectTo: 'list'},
+            {path:'list', component: List},
             {path:'form', component: Form},
             {path:'form/:id', component: Form},
         ]
