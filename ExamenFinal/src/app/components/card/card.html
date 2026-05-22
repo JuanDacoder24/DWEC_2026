@@ -20,11 +20,11 @@
         </span>
       </div>
       
-      <div class="d-flex gap-2">
-        <a [routerLink]="['/heroe', ninja.id]" class="btn btn-sm btn-info flex-fill">
+      <div class="d-flex gap-2 ">
+        <a [routerLink]="['/dashboard/seeDetails', ninja.id]" class="btn btn-sm btn-detalles flex-fill">
           Ver Detalles
         </a>
-        <a [routerLink]="['/formulario', ninja.id]" class="btn btn-sm btn-warning flex-fill">
+        <a [routerLink]="['/dashboard/form', ninja.id]" class="btn btn-sm btn-warning flex-fill">
           Editar
         </a>
       </div>

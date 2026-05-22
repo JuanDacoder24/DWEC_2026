@@ -5,6 +5,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { List } from './pages/list/list';
 import { Form } from './pages/form/form';
 import { authGuard } from './guards/auth-guard';
+import { SeeDetails } from './pages/see-details/see-details';
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
             {path:'list', component: List},
             {path:'form', component: Form},
             {path:'form/:id', component: Form},
+            {path: 'seeDetails/:id', component: SeeDetails}
         ]
     },
     {path:'**', redirectTo: 'landingPage'},

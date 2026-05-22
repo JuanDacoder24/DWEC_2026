@@ -1,0 +1,196 @@
+<!-- heroes-view.html -->
+<div class="container mt-4" >
+  
+  <!-- Header con acciones -->
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ ninja?.ninjaName }}</h2>
+        
+        <div class="btn-group gap-2">
+          <button class="btn btn-volver" (click)="goBack()">
+            <i class="bi bi-arrow-left"></i> Volver
+          </button>
+          <button class="btn btn-warning" (click)="editNinja()">
+            <i class="bi bi-pencil"></i> Editar
+          </button>
+          <button class="btn btn-danger" (click)="deleteNinja()">
+            <i class="bi bi-trash"></i> Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    
+    <!-- Columna izquierda: Carousel de imágenes -->
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body p-0">
+          <!-- Carousel -->
+          <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+              @for (image of images; track $index) {
+                <div class="carousel-item" [class.active]="$index === currentImageIndex">
+                  <img 
+                    [src]="image" 
+                    class="d-block w-100" 
+                    [alt]="ninja?.ninjaName"
+                    style="height: 500px; object-fit: cover;">
+                </div>
+              }
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Información del héroe -->
+    <div class="col-md-6">
+      
+      <!-- Información básica -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Información Básica</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <strong>Nombre completo:</strong>
+            <p class="mb-0">{{ ninja?.fullname }}</p>
+          </div>
+          
+          <div class="mb-3">
+            <strong>Género:</strong>
+            <p class="mb-0">{{ ninja?.gender }}</p>
+          </div>
+          
+          
+        </div>
+      </div>
+
+      <!-- Estadísticas (Power Stats) -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0">Estadísticas de Poder</h5>
+        </div>
+        <div class="card-body">
+          
+          <!-- Intelligence -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Intelligence</span>
+              <strong>{{ ninja?.stats?.intelligence }}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-info" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.intelligence"
+                [attr.aria-valuenow]="ninja?.stats?.intelligence" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- Strength -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Strength</span>
+              <strong>{{ ninja?.stats?.strength }}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-danger" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.strength"
+                [attr.aria-valuenow]="ninja?.stats?.strength" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- Speed -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Speed</span>
+              <strong>{{ ninja?.stats?.speed }}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-warning" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.speed"
+                [attr.aria-valuenow]="ninja?.stats?.speed" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- Durability -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Taijutsu</span>
+              <strong>{{ ninja?.stats?.taijutsu }}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-success" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.taijutsu"
+                [attr.aria-valuenow]="ninja?.stats?.taijutsu" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- Power -->
+          <div class="mb-3">
+            <div class="d-flex justify-content-between mb-1">
+              <span>Genjutsu</span>
+              <strong>{{ ninja?.stats?.genjutsu}}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-primary" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.genjutsu"
+                [attr.aria-valuenow]="ninja?.stats?.genjutsu" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+          <!-- Combat -->
+          <div class="mb-0">
+            <div class="d-flex justify-content-between mb-1">
+              <span>handseals</span>
+              <strong>{{ ninja?.stats?.handseals }}</strong>
+            </div>
+            <div class="progress">
+              <div 
+                class="progress-bar bg-dark" 
+                role="progressbar" 
+                [style.width.%]="ninja?.stats?.handseals"
+                [attr.aria-valuenow]="ninja?.stats?.handseals" 
+                aria-valuemin="0" 
+                aria-valuemax="100">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

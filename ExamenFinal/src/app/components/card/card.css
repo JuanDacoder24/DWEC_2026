@@ -1,0 +1,29 @@
+.btn-detalles{
+    background-color: #7817b8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-detalles:hover {
+    background-color: #5e0f8a;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-warning:hover {
+    background-color: #ec971f;
+    color: white;
+    text-decoration: none;
+}

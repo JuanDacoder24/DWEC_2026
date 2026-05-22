@@ -1,0 +1,44 @@
+.btn-volver{
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-volver:hover {
+    background-color: #4a5155;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-warning:hover {
+    background-color: #eb8e0d;
+    color: white;
+    text-decoration: none;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-danger:hover {
+    background-color: #c40d1f;
+    color: white;
+    text-decoration: none;
+}

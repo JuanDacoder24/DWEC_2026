@@ -21,7 +21,6 @@ export class NinjaServices {
     return resp;
   }
 
-
   getById(id: number): Promise<INinja> {
     return lastValueFrom(this.http.get<INinja>(`${this.baseURL}/${id}`));
   }
@@ -32,8 +31,8 @@ export class NinjaServices {
   }
 
 
-  update(ninja: INinja): Promise<INinja> {
-    return lastValueFrom(this.http.put<INinja>(this.baseURL, ninja));
+  update( ninja: INinja): Promise<INinja> {
+    return lastValueFrom(this.http.put<INinja>(this.baseURL , ninja));
   }
 
 
