@@ -31,8 +31,8 @@ export class NinjaServices {
   }
 
 
-  update( ninja: INinja): Promise<INinja> {
-    return lastValueFrom(this.http.put<INinja>(this.baseURL , ninja));
+  update(ninja: INinja): Promise<INinja> {
+  return lastValueFrom(this.http.put<INinja>(this.baseURL, ninja));
   }
 
 

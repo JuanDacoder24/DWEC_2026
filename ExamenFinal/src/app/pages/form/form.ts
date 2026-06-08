@@ -52,6 +52,7 @@ export class Form {
           naturetype: ninja.naturetype,
           affiliation: ninja.affiliation,
           stats: {
+            id: ninja.stats?.id ?? null,
             ninjutsu: ninja.stats?.ninjutsu ?? 0,
             taijutsu: ninja.stats?.taijutsu ?? 0,
             genjutsu: ninja.stats?.genjutsu ?? 0,
@@ -75,6 +76,7 @@ export class Form {
   }
   private crateForm(): FormGroup {
     return new FormGroup({
+      id: new FormControl(null),
       ninjaname: new FormControl('', [Validators.required, Validators.minLength(3)]),
       clan: new FormControl('', [Validators.required, Validators.minLength(3)]),
       fullname: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -85,6 +87,7 @@ export class Form {
       naturetype: new FormControl('', [Validators.required, Validators.minLength(3)]),
       affiliation: new FormControl('', [Validators.required, Validators.minLength(3)]),
       stats: new FormGroup({
+        id: new FormControl(null),
         ninjutsu: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)]),
         taijutsu: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)]),
         genjutsu: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)]),
@@ -118,7 +121,7 @@ export class Form {
       }
 
       this.ninjaForm.reset();
-      this.router.navigate(['/home']);
+      this.router.navigate(['dashboard/list']);
     } catch (error) {
       console.error('Error guardando ninja:', error);
       alert('Error al guardar el ninja');

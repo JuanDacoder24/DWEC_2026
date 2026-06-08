@@ -23,17 +23,16 @@ export class Login {
   }
 
   async getUser(loginForm: NgForm) {
-    const loginUser: IUser = loginForm.value as IUser
+  const loginUser: IUser = loginForm.value as IUser;
 
-    try {
-      let response = await this.userServices.login(loginUser)
-      console.log(response); 
-      if (response.token) {
-        localStorage.setItem("token", response.token)
-
-        this.router.navigate(['/dashboard'])
-        loginForm.reset();
-      }
+  try {
+    const response = await this.userServices.login(loginUser);
+    
+    if (response.token) {
+      localStorage.setItem("token", response.token);
+      await this.router.navigate(['/dashboard']); 
+      loginForm.reset();
+    }
 
     } catch (error) {
       Swal.fire({

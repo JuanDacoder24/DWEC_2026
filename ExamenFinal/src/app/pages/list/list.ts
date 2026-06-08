@@ -18,7 +18,7 @@ export class List implements OnInit {
   ninjas: INinja[] = [];
   ninjasFiltered: INinja[] = [];
 
-    // Información de paginación
+  // Información de paginación
   currentPage: number = 0; // Spring Boot empieza en 0
   totalPages: number = 0;
   totalElements: number = 0;
@@ -27,14 +27,20 @@ export class List implements OnInit {
 
   searchName: string = '';
   selectedGender: string = '';
-  minNinjutsu: number = 1;
+  minNinjutsu: number = 0;
   aplicarFiltro: boolean = false;
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.loadNinjas(this.currentPage);
   }
 
-  async loadNinjas(page: number ) {
+  async loadNinjas(page: number) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.warn('No hay token, esperando...');
+      setTimeout(() => this.loadNinjas(page), 100);
+      return;
+    }
     try {
       const response = await this.ninjaService.getAllNinjas(page);
       this.ninjas = response.content;
@@ -49,55 +55,56 @@ export class List implements OnInit {
     }
   }
 
-    // Ir a página específica
+  // Ir a página específica
   goToPage(page: number) {
     if (page >= 0 && page < this.totalPages) {
       this.loadNinjas(page);
     }
   }
 
-    // Página anterior
+  // Página anterior
   previousPage() {
     if (!this.isFirst) {
       this.loadNinjas(this.currentPage - 1);
     }
   }
 
-    // Página siguiente
+  // Página siguiente
   nextPage() {
     if (!this.isLast) {
       this.loadNinjas(this.currentPage + 1);
     }
   }
 
-    // Generar array de páginas para el paginador
+  // Generar array de páginas para el paginador
   get pages(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i);
   }
 
   applyFilters() {
 
-this.ninjasFiltered = this.ninjas.filter(ninja => {
+    this.ninjasFiltered = this.ninjas.filter(ninja => {
       // Filtro por nombre
       const nameMatch = this.searchName.toLowerCase();
       const matchesName = (ninja.ninjaName && ninja.ninjaName.toLowerCase().includes(nameMatch)) ||
-                          (ninja.fullname && ninja.fullname.toLowerCase().includes(nameMatch)) ||
-                          nameMatch === '';
-      
+        (ninja.fullname && ninja.fullname.toLowerCase().includes(nameMatch)) ||
+        nameMatch === '';
 
-      
+
+
       // Filtro por género
       const matchesGender = this.selectedGender === '' || ninja.gender === this.selectedGender;
-      
+
       // Filtro por poder mínimo
-      const matchesPower = ninja.stats && ninja.stats.strength >= this.minNinjutsu;
-      
-      return matchesName  && matchesGender && matchesPower;
+      const matchesPower = this.minNinjutsu === 0 ||
+        (ninja.stats && ninja.stats.strength >= this.minNinjutsu);
+
+      return matchesName && matchesGender && matchesPower;
     });
-    }
-    
-      
-  
+  }
+
+
+
 
   resetFilters() {
     this.searchName = '';

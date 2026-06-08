@@ -7,7 +7,7 @@ export const loginGuard: CanActivateFn = (route, state) => {
   // Si ya tiene token, está logueado
   if (localStorage.getItem('token')) {
     // Redirige a home porque ya está autenticado
-    router.navigate(['/home']);
+    router.navigate(['/dashboard']);
     return false; // Bloquea el acceso a /login
   }
   
